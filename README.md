@@ -1,67 +1,44 @@
-# 📚 BookShop Business Website
+# Mary Bookshop Website
 
-This is a modern and responsive Bookshop business website built using HTML and CSS.
+This is a modern, responsive bookshop business website built with HTML and CSS.
+It highlights products, services, and contact details for customers.
 
-The website is designed to showcase books, promote services, and provide contact information for customers.
-
----
-
-## 🚀 Live Demo
+## Live Demo
 
 https://denismunene2006-lab.github.io/mary-bookshop/
 
-
----
-
-## 🛠 Built With
+## Built With
 
 - HTML5
 - CSS3
 
----
+## Features
 
-## ✨ Features
+- Clean, modern layout
+- Fixed navigation bar
+- Hero section and product highlights
+- About, services, and contact sections
+- Mobile-friendly responsive design
 
-- Clean and modern layout
-- Navigation bar
-- Featured books section
-- About the business section
-- Services section
-- Contact section
-- Responsive design for mobile and desktop
+## Project Structure
 
----## 📂 Project Structure
-index.html
-about.html
-books.html
-contact.html
-css/
-style.css
-images/
+- `index.html`
+- `style.css`
 
-
----
-
-## 🎯 Purpose of the Project
+## Purpose
 
 This project was created to practice:
 
 - Styling with CSS
 - Creating business-style layouts
-- Improving responsive design skills
+- Building responsive pages
 
----
-
-## 👨‍💻 Author
+## Author
 
 **Denis Munene**
 
 Aspiring Web Developer passionate about building real-world business websites.
 
----
-
-## 📬 Contact
+## Contact
 
 For inquiries, please use the contact section on the website.
-
-
