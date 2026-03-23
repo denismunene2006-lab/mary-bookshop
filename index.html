@@ -2,92 +2,515 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Mary Bookshop</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Source+Serif+4:wght@300;400;500;600&display=swap');
 
+        :root {
+            --bg: #f6f4ef;
+            --surface: #ffffff;
+            --surface-2: #f0ebe3;
+            --ink: #1f2933;
+            --muted: #5f6b76;
+            --accent: #d97c1f;
+            --accent-2: #0f6e6b;
+            --border: #e6ded2;
+            --shadow: 0 20px 50px rgba(31, 41, 51, 0.12);
+            --shadow-soft: 0 10px 30px rgba(31, 41, 51, 0.08);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Source Serif 4', serif;
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle at top, #ffffff 0%, var(--bg) 55%);
+            color: var(--ink);
+            line-height: 1.7;
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        h1, h2, h3, h4 {
+            font-family: 'Sora', sans-serif;
+            letter-spacing: -0.02em;
+            margin: 0 0 12px;
+            color: var(--ink);
+        }
+
+        p { margin: 0 0 16px; color: var(--muted); }
+
+        /* Hero */
+        header.hero {
+            position: relative;
+            color: #fff;
+            background: linear-gradient(120deg, rgba(15, 110, 107, 0.9), rgba(31, 41, 51, 0.9)),
+                        url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+            overflow: hidden;
+        }
+
+        header.hero::after {
+            content: "";
+            position: absolute;
+            right: -120px;
+            top: -80px;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(217, 124, 31, 0.5), transparent 70%);
+            opacity: 0.9;
+        }
+
+        .hero-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 90px 20px 80px;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 32px;
+        }
+
+        .eyebrow {
+            font-family: 'Sora', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        .hero-inner h1 { font-size: clamp(2.6rem, 4vw, 3.6rem); margin: 0; }
+        .hero-text { font-size: 1.1rem; max-width: 620px; color: rgba(255, 255, 255, 0.85); }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .hero-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin-top: 10px;
+            width: 100%;
+            text-align: left;
+        }
+
+        .highlight {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 14px;
+            padding: 16px 18px;
+            backdrop-filter: blur(6px);
+        }
+
+        .highlight h4 { color: #fff; margin-bottom: 6px; font-size: 1rem; }
+        .highlight p { color: rgba(255, 255, 255, 0.78); font-size: 0.95rem; }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(31, 41, 51, 0.94);
+            padding: 16px 24px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .nav-brand { font-size: 1.25rem; font-weight: 700; color: #fff; font-family: 'Sora', sans-serif; }
+        .nav-links { display: flex; gap: 14px; align-items: center; }
+
+        .navbar a {
+            color: #f8fafc;
+            font-family: 'Sora', sans-serif;
+            font-size: 0.88rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 8px 14px;
+            border-radius: 999px;
+            border: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .navbar a:hover, .navbar a.active {
+            background: rgba(217, 124, 31, 0.18);
+            border-color: rgba(217, 124, 31, 0.5);
+        }
+
+        .navbar a.cta {
+            background: #ffffff;
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        /* Sections */
+        section {
+            padding: 60px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-alt {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            box-shadow: var(--shadow-soft);
+            padding: 50px 32px;
+        }
+
+        .section-header { max-width: 760px; margin-bottom: 24px; }
+        h2 { font-size: clamp(1.8rem, 2.6vw, 2.3rem); }
+        h2::after {
+            content: "";
+            display: block;
+            width: 52px;
+            height: 3px;
+            margin-top: 10px;
+            background: var(--accent);
+            border-radius: 999px;
+        }
+        h2.no-rule::after { display: none; }
+        h3 { font-size: 1.3rem; color: var(--accent-2); }
+
+        /* Info Cards */
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin-top: 22px;
+        }
+
+        .info-card {
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 18px 20px;
+        }
+
+        .info-card h4 { margin-bottom: 6px; }
+        .info-card p { margin: 0; }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 22px;
+            margin-top: 22px;
+        }
+
+        .product-card {
+            background: var(--surface);
+            border-radius: 18px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            animation: fadeUp 0.6s ease both;
+        }
+
+        .product-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+        .product-card img { width: 100%; height: 190px; object-fit: cover; }
+        .product-info { padding: 18px 18px 22px; }
+        .price {
+            display: inline-block;
+            background: rgba(217, 124, 31, 0.12);
+            color: #9a4f00;
+            font-weight: 700;
+            font-size: 0.92rem;
+            padding: 4px 10px;
+            border-radius: 999px;
+            margin-bottom: 8px;
+        }
+
+        /* Form Styles */
+        .form-box {
+            background: var(--surface);
+            padding: 32px;
+            border-radius: 22px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-soft);
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        label {
+            font-family: 'Sora', sans-serif;
+            font-size: 0.9rem;
+            color: var(--ink);
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 12px 14px;
+            margin: 10px 0 18px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: #fff;
+            font-family: 'Source Serif 4', serif;
+            font-size: 1rem;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: 2px solid rgba(15, 110, 107, 0.2);
+            border-color: rgba(15, 110, 107, 0.6);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--accent);
+            color: white;
+            padding: 12px 26px;
+            text-decoration: none;
+            border-radius: 999px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Sora', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover { background: #c56e17; transform: translateY(-2px); box-shadow: var(--shadow); }
+        .btn.block { width: 100%; }
+        .btn.primary { background: var(--accent); }
+        .btn.ghost {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: #fff;
+        }
+        .btn.whatsapp { background: #25D366; }
+        .btn.whatsapp:hover { background: #1ebe5d; }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 18px;
+        }
+
+        footer {
+            background: #141a20;
+            color: #f3f4f6;
+            text-align: center;
+            padding: 24px 16px;
+            margin-top: 50px;
+        }
+        footer p { margin: 0; font-size: 0.9rem; color: rgba(255, 255, 255, 0.75); }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .product-card:nth-child(2) { animation-delay: 0.05s; }
+        .product-card:nth-child(3) { animation-delay: 0.1s; }
+        .product-card:nth-child(4) { animation-delay: 0.15s; }
+        .product-card:nth-child(5) { animation-delay: 0.2s; }
+        .product-card:nth-child(6) { animation-delay: 0.25s; }
+        .product-card:nth-child(7) { animation-delay: 0.3s; }
+        .product-card:nth-child(8) { animation-delay: 0.35s; }
+
+        @media (max-width: 768px) {
+            .hero-inner { padding: 70px 20px 60px; }
+            .navbar { flex-direction: column; gap: 12px; }
+            .nav-links { justify-content: center; flex-wrap: wrap; }
+            .section-alt { padding: 36px 22px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .product-card { animation: none; }
+        }
+    </style>
 </head>
 <body>
 
-<header>
-    <h1>Mary Bookshop</h1>
-    <p>Affordable Books & Stationery for Everyone</p>
-</header>
-
- <nav class="navbar">
-  <a href="#about">About</a>
-  <a href="#products">Products</a>
-  <a href="#location">Location</a>
-  <a href="#contact">Contact</a>
+<nav class="navbar">
+    <div class="nav-brand">Mary Bookshop</div>
+    <div class="nav-links">
+        <a href="#about" onclick="showHome()">About</a>
+        <a href="#products" onclick="showHome()">Products</a>
+        <a href="#order-now" onclick="showOrder()">Order Now</a>
+        <a href="#location" onclick="showHome()">Location</a>
+        <a href="#contact" onclick="showHome()">Contact</a>
+        <a href="#login" class="cta" onclick="showLogin()">Login</a>
+    </div>
 </nav>
 
-<section id="about">
-    <h2>About Us</h2>
-    <p>
-        Mary Bookshop sells affordable books and daily-use items for everyone.
-        We serve students, teachers, parents, and the entire community.
-   
+<header class="hero">
+    <div class="hero-inner">
+        <span class="eyebrow">Karurumo | Books and Stationery</span>
+        <h1>Mary Bookshop</h1>
+        <p class="hero-text">A friendly neighborhood shop for textbooks, story books, and essential school supplies. Quality you can trust, prices you can afford.</p>
+        <div class="hero-actions">
+            <a href="#products" class="btn primary" onclick="showHome()">Browse Products</a>
+            <a href="#order-now" class="btn ghost" onclick="showOrder()">Order on WhatsApp</a>
+        </div>
+        <div class="hero-highlights">
+            <div class="highlight">
+                <h4>Curriculum Ready</h4>
+                <p>Set books, revision guides, and exercise books for every class.</p>
+            </div>
+            <div class="highlight">
+                <h4>Everyday Essentials</h4>
+                <p>Stationery, art supplies, and school bags in one stop.</p>
+            </div>
+            <div class="highlight">
+                <h4>Local Delivery</h4>
+                <p>Fast delivery around Karurumo when you need it most.</p>
+            </div>
+        </div>
+    </div>
+</header>
 
-</p>
-    <p>
-        Our books are cheap, high quality, and suitable for all ages.
-    </p>
+<div id="home-view">
+
+<section id="about" class="section-alt">
+    <div class="section-header">
+        <h2>About Us</h2>
+        <p>
+            Welcome to <strong>Mary Bookshop</strong>, your trusted partner in education and knowledge in Karurumo.
+            We provide quality textbooks, story books, and essential stationery at fair prices for students, teachers, and parents.
+        </p>
+    </div>
+    <div class="info-cards">
+        <div class="info-card">
+            <h4>Curated for Schools</h4>
+            <p>We stock titles aligned with local curricula and popular set books.</p>
+        </div>
+        <div class="info-card">
+            <h4>Affordable Bundles</h4>
+            <p>Save more with exercise book packs and stationery bundles.</p>
+        </div>
+        <div class="info-card">
+            <h4>Friendly Support</h4>
+            <p>Need help choosing? We guide you to the right materials.</p>
+        </div>
+    </div>
 </section>
 
 <section id="products">
-    <h2>Our Products</h2>
-
-    <h3>Books</h3>
-    <ul class="products">
-        <li>Bridges Without Rivers – KES 300</li>
-        <li>Strange Happenings – KES 300</li>
-        <li>Hodi ya Mashairi – KES 300</li>
-        <li>Sound and Read Book 1 & 2 – KES 250</li>
-        <li>Exercise Books & Learners Papers</li>
-    </ul>
-
-    <h3>Other Items</h3>
-    <ul class="products">
-        <li>Crayons & Water Colours</li>
-        <li>Modelling Clay</li>
-        <li>Chains, Bulbs & Extensions</li>
-        <li>Watches, Earphones & Earpods</li>
-        <li>Detergent, Socks & Scissors</li>
-        <li>Water Refilling Services</li>
-    </ul>
-<h2>Our Shop Gallery</h2>
-
-<img src="images/shop.jpg" width="250" alt="Our Shop">
-<img src="images/books.jpg" width="250" alt="Books">
-<img src="images/story books.jpg" width="250" alt="Story Books">
-<img src="images/crayons.jpg" width="250" alt="Crayons">
-<img src="images/water.jpg" width="300" alt="water">
-
+    <div class="section-header">
+        <h2>Our Products</h2>
+        <p>Trusted by families and teachers across Karurumo for everyday school essentials.</p>
+    </div>
+    <h3>Top Selling Books</h3>
+    <div class="product-grid">
+        <!-- Card 1 -->
+        <div class="product-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/da/English-English_dictionary_%284189273408%29_%282%29.jpg" alt="English Dictionary" loading="lazy">
+            <div class="product-info">
+                <h4>English Dictionary</h4>
+                <p class="price">KES 1,200</p>
+                <p>Comprehensive English dictionary for students.</p>
+            </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="product-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/23/Children%C2%B4s_library_books.jpeg" alt="Classic Story Books" loading="lazy">
+            <div class="product-info">
+                <h4>Classic Story Books</h4>
+                <p class="price">KES 400</p>
+                <p>Collection of exciting stories for all ages.</p>
+            </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="product-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Notebooks.jpg" alt="Exercise Books (Pack)" loading="lazy">
+            <div class="product-info">
+                <h4>Exercise Books (Pack)</h4>
+                <p class="price">KES 500</p>
+                <p>High-quality ruled exercise books.</p>
+            </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="product-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Crayons_with_Glitter.JPG" alt="Stationery & Art" loading="lazy">
+            <div class="product-info">
+                <h4>Stationery & Art</h4>
+                <p class="price">From KES 100</p>
+                <p>Crayons, Clay, and Paints.</p>
+            </div>
+        </div>
+        <!-- Card 5 -->
+        <div class="product-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/92/Pergel_%28pair_of_compasses%2C_drafting%29.jpg" alt="Oxford Mathematical Set" loading="lazy">
+            <div class="product-info">
+                <h4>Oxford Mathematical Set</h4>
+                <p class="price">KES 450</p>
+                <p>Essential geometry tools for students.</p>
+            </div>
+        </div>
+        <!-- Card 6 -->
+        <div class="product-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/02/Eastpak_Sugarbush_backpack_black.jpg" alt="School Backpack" loading="lazy">
+            <div class="product-info">
+                <h4>School Backpack</h4>
+                <p class="price">KES 1,200</p>
+                <p>Durable and stylish bags.</p>
+            </div>
+        </div>
+        <!-- Card 7 -->
+        <div class="product-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Holy_bible_%284587474188%29.jpg" alt="Good News Bible" loading="lazy">
+            <div class="product-info">
+                <h4>Good News Bible</h4>
+                <p class="price">KES 800</p>
+                <p>Complete holy bible.</p>
+            </div>
+        </div>
+        <!-- Card 8 -->
+        <div class="product-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/dd/A_modern_scientific_calculator.jpeg" alt="Scientific Calculator" loading="lazy">
+            <div class="product-info">
+                <h4>Scientific Calculator</h4>
+                <p class="price">KES 1,500</p>
+                <p>Casio fx-82MS for high school.</p>
+            </div>
+        </div>
+    </div>
 </section>
 
-<section id="location">
-    <h2>Location & Opening Hours</h2>
-    <p>
-        📍 Karurumo, opposite Wamwanga Butchery
-    </p>
-    <p>
-        🕘 Monday – Saturday: 8:30 AM – 7:00 PM <br>
-        🕒 Sunday: 2:30 PM – 8:00 PM
-    </p>
-    <p>
-        🚚 Delivery available around Karurumo
-    </p>
+<section id="location" class="section-alt">
+    <div class="section-header">
+        <h2>Location and Hours</h2>
+        <p>Karurumo, opposite Wamwanga Butchery.</p>
+    </div>
+    <p><strong>Opening Hours:</strong> Monday - Saturday: 8:30 AM - 7:00 PM <br>Sunday: 2:30 PM - 8:00 PM</p>
+    <p><strong>Delivery:</strong> Available around Karurumo.</p>
 </section>
 
-<section id="contact">
-  <h2>Contact Us</h2>
-
+<section id="contact" class="section-alt">
+  <div class="section-header">
+    <h2>Contact Us</h2>
+    <p>Reach us quickly for orders, stock checks, or delivery details.</p>
+  </div>
   <div class="buttons">
-    <a href="https://wa.me/254710236087" class="button whatsapp-btn">
+    <a href="https://wa.me/254710236087" class="btn whatsapp">
+      <i class="fab fa-whatsapp"></i>
       WhatsApp Us
     </a>
-
-    <a href="tel:0710236087" class="button call-btn">
+    <a href="tel:0710236087" class="btn">
       Call Us
     </a>
   </div>
@@ -97,10 +520,75 @@
 
 
 <footer>
-    <p>© 2026 Mary Bookshop | Serving Karurumo with Pride</p>
+    <p>&copy; 2026 Mary Bookshop | Serving Karurumo with pride</p>
 </footer>
+
+</div> <!-- End home-view -->
+
+<!-- Login Section (Hidden by Default) -->
+<section id="login" class="section-alt" style="display: none; margin-top: 50px;">
+    <div class="form-box">
+        <h2 class="no-rule" style="text-align: center;">Welcome Back</h2>
+        <form onsubmit="event.preventDefault(); alert('Login successful (Demo mode)'); showHome();">
+            <label>Email / Username</label>
+            <input type="text" placeholder="Enter your username" required>
+            
+            <label>Password</label>
+            <input type="password" placeholder="Enter your password" required>
+            
+            <button type="submit" class="btn block">Login</button>
+            <p style="text-align: center; margin-top: 10px; font-size: 0.9em;">Don't have an account? <a href="#" style="color: var(--accent);">Sign up</a></p>
+            <p style="text-align: center;"><a href="#" onclick="showHome()" style="color: #666; font-size: 0.8em;">Back to Home</a></p>
+        </form>
+    </div>
+</section>
+
+<!-- Order Section (Hidden by Default) -->
+<section id="order-now" class="section-alt" style="display: none; margin-top: 50px;">
+    <div class="form-box">
+        <h2 class="no-rule" style="text-align: center;">Place an Order</h2>
+        <p style="text-align: center;">Fill in the details below and we will process your order via WhatsApp immediately.</p>
+        <form id="orderForm">
+            <label>Your Name</label>
+            <input type="text" id="custName" placeholder="e.g. John Doe" required>
+            
+            <label>Items to Order</label>
+            <textarea id="custOrder" rows="4" placeholder="e.g. 1x Hodi ya Mashairi, 2x Exercise Books" required></textarea>
+            
+            <button type="button" class="btn block" onclick="sendOrder()">
+                <i class="fab fa-whatsapp"></i> Send Order via WhatsApp
+            </button>
+            <p style="text-align: center; margin-top: 15px;"><a href="#" onclick="showHome()" style="color: #666;">Back to Home</a></p>
+        </form>
+    </div>
+</section>
+
+<script>
+    function showHome() {
+        document.getElementById('home-view').style.display = 'block';
+        document.getElementById('login').style.display = 'none';
+        document.getElementById('order-now').style.display = 'none';
+        window.scrollTo(0,0);
+    }
+    function showLogin() {
+        document.getElementById('home-view').style.display = 'none';
+        document.getElementById('login').style.display = 'block';
+        document.getElementById('order-now').style.display = 'none';
+    }
+    function showOrder() {
+        document.getElementById('home-view').style.display = 'none';
+        document.getElementById('login').style.display = 'none';
+        document.getElementById('order-now').style.display = 'block';
+    }
+    function sendOrder() {
+        var name = document.getElementById("custName").value;
+        var order = document.getElementById("custOrder").value;
+        if(name === "" || order === "") { alert("Please fill in all fields"); return; }
+        var message = "Hello Mary Bookshop, my name is " + name + ". I would like to order: " + order;
+        var url = "https://wa.me/254710236087?text=" + encodeURIComponent(message);
+        window.open(url, '_blank');
+    }
+</script>
 
 </body>
 </html>
-
-
