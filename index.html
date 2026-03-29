@@ -9,16 +9,19 @@
     
 </head>
 <body>
-
 <nav class="navbar">
     <div class="nav-brand">Mary Bookshop</div>
     <div class="nav-links">
-        <a href="#about" onclick="showHome()">About</a>
-        <a href="#products" onclick="showHome()">Products</a>
-        <a href="#order-now" onclick="showOrder()">Order Now</a>
-        <a href="#location" onclick="showHome()">Location</a>
-        <a href="#contact" onclick="showHome()">Contact</a>
-        <a href="#login" class="cta" onclick="showLogin()">Login</a>
+        <a href="#about">About</a>
+        <a href="#products">Products</a>
+        <a href="#order-now">Order Now</a>
+        <a href="#location">Location</a>
+        <a href="#contact">Contact</a>
+        <a href="#login" class="cta">Login</a>
+    </div>
+
+    <div class="hamburger">
+        <i class="fa fa-bars"></i>
     </div>
 </nav>
 
@@ -183,7 +186,6 @@
 
 
 
-
 <footer>
     <p>&copy; 2026 Mary Bookshop | Serving Karurumo with pride</p>
 </footer>
@@ -228,24 +230,54 @@
     </div>
 </section>
 
+
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelector('.nav-links');
+    const hamburger = document.querySelector('.hamburger');
+
+    hamburger.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+    });
+
+    // Close the menu when a link is clicked (optional)
+    navLinks.addEventListener('click', function(event) {
+        if (event.target.tagName === 'A') {
+            navLinks.classList.remove('active');
+        }
+    });
+});
     function showHome() {
         document.getElementById('home-view').style.display = 'block';
         document.getElementById('login').style.display = 'none';
         document.getElementById('order-now').style.display = 'none';
         window.scrollTo(0,0);
     }
+
     function showLogin() {
         document.getElementById('home-view').style.display = 'none';
         document.getElementById('login').style.display = 'block';
         document.getElementById('order-now').style.display = 'none';
     }
+
     function showOrder() {
         document.getElementById('home-view').style.display = 'none';
         document.getElementById('login').style.display = 'none';
         document.getElementById('order-now').style.display = 'block';
     }
+
     function sendOrder() {
+        //function showHome() {
+            document.getElementById('home-view').style.display = 'block';
+            document.getElementById('login').style.display = 'none';
+            document.getElementById('order-now').style.display = 'none';
+            window.scrollTo(0,0);
+        //}
+        //function showLogin() {
+            document.getElementById('home-view').style.display = 'none';
+            document.getElementById('login').style.display = 'block';
+            document.getElementById('order-now').style.display = 'none';
+        //}
         var name = document.getElementById("custName").value;
         var order = document.getElementById("custOrder").value;
         if(name === "" || order === "") { alert("Please fill in all fields"); return; }
