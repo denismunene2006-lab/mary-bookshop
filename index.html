@@ -11,21 +11,20 @@
 <body>
 <nav class="navbar">
     <a href="#home-view" class="nav-brand" onclick="showHome(); closeMenu();">Mary Bookshop</a>
-    <details class="nav-menu">
-        <summary class="hamburger" aria-label="Toggle navigation">
+    <div class="nav-menu">
+        <button type="button" class="hamburger" aria-label="Toggle navigation" aria-expanded="false" onclick="toggleMenu()">
             <span></span>
             <span></span>
             <span></span>
-        </summary>
+        </button>
         <div class="nav-links">
             <a href="#about" onclick="showHome(); closeMenu();">ABOUT</a>
             <a href="#products" onclick="showHome(); closeMenu();">PRODUCTS</a>
             <a href="#order-now" onclick="showOrder(); closeMenu();">ORDER NOW</a>
             <a href="#location" onclick="showHome(); closeMenu();">LOCATION</a>
             <a href="#contact" onclick="showHome(); closeMenu();">CONTACT</a>
-            <a href="#login" class="cta" onclick="showLogin(); closeMenu();">LOGIN</a>
         </div>
-    </details>
+    </div>
 </nav>
 
 <header class="hero">
@@ -195,24 +194,6 @@
 
 </div> <!-- End home-view -->
 
-<!-- Login Section (Hidden by Default) -->
-<section id="login" class="section-alt" style="display: none; margin-top: 50px;">
-    <div class="form-box">
-        <h2 class="no-rule" style="text-align: center;">Welcome Back</h2>
-        <form onsubmit="event.preventDefault(); alert('Login successful (Demo mode)'); showHome();">
-            <label>Email / Username</label>
-            <input type="text" placeholder="Enter your username" required>
-            
-            <label>Password</label>
-            <input type="password" placeholder="Enter your password" required>
-            
-            <button type="submit" class="btn block">Login</button>
-            <p style="text-align: center; margin-top: 10px; font-size: 0.9em;">Don't have an account? <a href="#" style="color: var(--accent);">Sign up</a></p>
-            <p style="text-align: center;"><a href="#" onclick="showHome()" style="color: #666; font-size: 0.8em;">Back to Home</a></p>
-        </form>
-    </div>
-</section>
-
 <!-- Order Section (Hidden by Default) -->
 <section id="order-now" class="section-alt" style="display: none; margin-top: 50px;">
     <div class="form-box">
@@ -235,30 +216,103 @@
 
 
 <script>
+    let revealObserver;
+
+    function updateNavbarState() {
+        const navbar = document.querySelector('.navbar');
+        if (navbar) {
+            navbar.classList.toggle('scrolled', window.scrollY > 24);
+        }
+    }
+
+    function setupRevealAnimations() {
+        const revealGroups = [
+            { selector: '#home-view .section-header', step: 0 },
+            { selector: '#home-view .highlight', step: 90 },
+            { selector: '#home-view .info-card', step: 90 },
+            { selector: '#home-view #products h3', step: 0 },
+            { selector: '#home-view .product-card', step: 70 },
+            { selector: '#home-view #location p', step: 100 },
+            { selector: '#home-view .buttons', step: 0 },
+            { selector: 'footer', step: 0 }
+        ];
+
+        revealGroups.forEach(function(group) {
+            document.querySelectorAll(group.selector).forEach(function(element, index) {
+                if (element.dataset.revealReady === 'true') {
+                    return;
+                }
+
+                element.dataset.revealReady = 'true';
+                element.classList.add('reveal-target');
+                element.style.setProperty('--reveal-delay', `${Math.min(index * group.step, 420)}ms`);
+            });
+        });
+
+        const revealTargets = document.querySelectorAll('.reveal-target');
+
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+            revealTargets.forEach(function(element) {
+                element.classList.add('is-visible');
+            });
+            return;
+        }
+
+        revealObserver = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.16,
+            rootMargin: '0px 0px -10% 0px'
+        });
+
+        revealTargets.forEach(function(element) {
+            if (element.dataset.revealObserved === 'true') {
+                return;
+            }
+
+            revealObserver.observe(element);
+            element.dataset.revealObserved = 'true';
+        });
+    }
+
+    function toggleMenu() {
+        const navMenu = document.querySelector('.nav-menu');
+        const hamburger = document.querySelector('.hamburger');
+
+        if (navMenu) {
+            const isOpen = navMenu.classList.toggle('open');
+            if (hamburger) {
+                hamburger.setAttribute('aria-expanded', String(isOpen));
+            }
+        }
+    }
+
     function closeMenu() {
         const navMenu = document.querySelector('.nav-menu');
+        const hamburger = document.querySelector('.hamburger');
+
         if (navMenu) {
-            navMenu.removeAttribute('open');
+            navMenu.classList.remove('open');
+        }
+
+        if (hamburger) {
+            hamburger.setAttribute('aria-expanded', 'false');
         }
     }
 
     function showHome() {
         document.getElementById('home-view').style.display = 'block';
-        document.getElementById('login').style.display = 'none';
-        document.getElementById('order-now').style.display = 'none';
-        window.scrollTo(0,0);
-    }
-
-    function showLogin() {
-        document.getElementById('home-view').style.display = 'none';
-        document.getElementById('login').style.display = 'block';
         document.getElementById('order-now').style.display = 'none';
         window.scrollTo(0,0);
     }
 
     function showOrder() {
         document.getElementById('home-view').style.display = 'none';
-        document.getElementById('login').style.display = 'none';
         document.getElementById('order-now').style.display = 'block';
         window.scrollTo(0,0);
     }
@@ -271,6 +325,25 @@
         var url = "https://wa.me/254710236087?text=" + encodeURIComponent(message);
         window.open(url, '_blank');
     }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        setupRevealAnimations();
+        updateNavbarState();
+
+        window.addEventListener('scroll', updateNavbarState, { passive: true });
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                closeMenu();
+            }
+        });
+
+        document.addEventListener('click', function(event) {
+            const navMenu = document.querySelector('.nav-menu');
+            if (navMenu && navMenu.classList.contains('open') && !navMenu.contains(event.target)) {
+                closeMenu();
+            }
+        });
+    });
 </script>
 
 </body>
