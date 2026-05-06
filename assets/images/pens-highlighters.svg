@@ -1,0 +1,16 @@
+<svg width="900" height="700" viewBox="0 0 900 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="900" y2="700" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF8ED"/>
+      <stop offset="1" stop-color="#F2F6F9"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="700" rx="42" fill="url(#bg)"/>
+  <rect x="170" y="420" width="540" height="54" rx="27" fill="#D97C1F" transform="rotate(-18 170 420)"/>
+  <rect x="210" y="390" width="440" height="30" rx="15" fill="#0F6E6B" transform="rotate(10 210 390)"/>
+  <rect x="255" y="280" width="360" height="24" rx="12" fill="#F4A261" transform="rotate(-36 255 280)"/>
+  <rect x="570" y="250" width="90" height="20" rx="10" fill="#1F2933" transform="rotate(24 570 250)"/>
+  <rect x="640" y="300" width="24" height="90" rx="12" fill="#1F2933" transform="rotate(24 640 300)"/>
+  <circle cx="200" cy="170" r="84" fill="#D97C1F" fill-opacity="0.12"/>
+  <text x="90" y="90" fill="#1F2933" font-family="Sora, Arial, sans-serif" font-size="36" font-weight="700">Pens & Highlighters</text>
+</svg>

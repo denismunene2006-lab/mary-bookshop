@@ -1,0 +1,20 @@
+<svg width="900" height="700" viewBox="0 0 900 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="900" y2="700" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F6F4EF"/>
+      <stop offset="1" stop-color="#EEF4F1"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="700" rx="42" fill="url(#bg)"/>
+  <rect x="230" y="120" width="440" height="430" rx="28" fill="#FFFFFF" stroke="#D8E0E7" stroke-width="4"/>
+  <rect x="230" y="120" width="440" height="70" rx="28" fill="#0F6E6B"/>
+  <rect x="265" y="155" width="165" height="20" rx="10" fill="#FFFFFF" fill-opacity="0.9"/>
+  <rect x="285" y="230" width="320" height="16" rx="8" fill="#D6DEE6"/>
+  <rect x="285" y="272" width="280" height="16" rx="8" fill="#D6DEE6"/>
+  <rect x="285" y="314" width="300" height="16" rx="8" fill="#D6DEE6"/>
+  <rect x="285" y="356" width="250" height="16" rx="8" fill="#D6DEE6"/>
+  <rect x="285" y="398" width="220" height="16" rx="8" fill="#D6DEE6"/>
+  <rect x="285" y="440" width="270" height="16" rx="8" fill="#D6DEE6"/>
+  <rect x="640" y="120" width="30" height="430" rx="15" fill="#D97C1F"/>
+  <text x="90" y="90" fill="#1F2933" font-family="Sora, Arial, sans-serif" font-size="36" font-weight="700">Planner Journal</text>
+</svg>

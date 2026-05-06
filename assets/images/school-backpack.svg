@@ -1,0 +1,17 @@
+<svg width="900" height="700" viewBox="0 0 900 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="900" y2="700" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EFF5F8"/>
+      <stop offset="1" stop-color="#E6ECEF"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="700" rx="42" fill="url(#bg)"/>
+  <path d="M336 224C336 173.742 376.742 133 427 133H473C523.258 133 564 173.742 564 224V523H336V224Z" fill="#1F2933"/>
+  <path d="M360 241C360 201.787 391.787 170 431 170H469C508.213 170 540 201.787 540 241V523H360V241Z" fill="#0F6E6B"/>
+  <rect x="387" y="320" width="126" height="114" rx="28" fill="#D97C1F"/>
+  <rect x="404" y="193" width="92" height="24" rx="12" fill="#F6F4EF" fill-opacity="0.85"/>
+  <path d="M336 254C302 267 280 296 280 336V502C280 541 311 572 350 572H360V282C360 268 352 256 336 254Z" fill="#0B4F4C"/>
+  <path d="M564 254C598 267 620 296 620 336V502C620 541 589 572 550 572H540V282C540 268 548 256 564 254Z" fill="#0B4F4C"/>
+  <circle cx="450" cy="378" r="20" fill="#FFFFFF" fill-opacity="0.9"/>
+  <text x="90" y="90" fill="#1F2933" font-family="Sora, Arial, sans-serif" font-size="36" font-weight="700">School Backpack</text>
+</svg>

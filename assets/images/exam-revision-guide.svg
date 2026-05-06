@@ -1,0 +1,26 @@
+<svg width="900" height="700" viewBox="0 0 900 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="900" y2="700" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F6F4EF"/>
+      <stop offset="1" stop-color="#E8EEF2"/>
+    </linearGradient>
+    <linearGradient id="book" x1="0" y1="0" x2="0" y2="1" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F6E6B"/>
+      <stop offset="1" stop-color="#0B4F4C"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="700" rx="42" fill="url(#bg)"/>
+  <circle cx="710" cy="130" r="110" fill="#D97C1F" fill-opacity="0.15"/>
+  <circle cx="170" cy="560" r="140" fill="#0F6E6B" fill-opacity="0.12"/>
+  <rect x="200" y="140" width="500" height="360" rx="28" fill="#FFFFFF" stroke="#D6DEE6" stroke-width="4"/>
+  <rect x="240" y="180" width="180" height="18" rx="9" fill="#D97C1F"/>
+  <rect x="240" y="222" width="320" height="20" rx="10" fill="#D6DEE6"/>
+  <rect x="240" y="262" width="280" height="20" rx="10" fill="#D6DEE6"/>
+  <rect x="240" y="302" width="230" height="20" rx="10" fill="#D6DEE6"/>
+  <rect x="240" y="360" width="420" height="74" rx="20" fill="url(#book)"/>
+  <rect x="280" y="388" width="130" height="18" rx="9" fill="#FFFFFF" fill-opacity="0.84"/>
+  <rect x="240" y="448" width="88" height="18" rx="9" fill="#0F6E6B" fill-opacity="0.6"/>
+  <rect x="336" y="448" width="88" height="18" rx="9" fill="#0F6E6B" fill-opacity="0.4"/>
+  <rect x="432" y="448" width="88" height="18" rx="9" fill="#0F6E6B" fill-opacity="0.25"/>
+  <text x="60" y="90" fill="#1F2933" font-family="Sora, Arial, sans-serif" font-size="36" font-weight="700">Revision Guide</text>
+</svg>

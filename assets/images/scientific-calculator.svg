@@ -1,0 +1,23 @@
+<svg width="900" height="700" viewBox="0 0 900 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="900" y2="700" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F5F7FA"/>
+      <stop offset="1" stop-color="#E9EEF2"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="700" rx="42" fill="url(#bg)"/>
+  <rect x="290" y="110" width="320" height="470" rx="34" fill="#1F2933"/>
+  <rect x="322" y="144" width="256" height="82" rx="20" fill="#0F6E6B"/>
+  <circle cx="350" cy="190" r="10" fill="#D97C1F"/>
+  <circle cx="390" cy="190" r="10" fill="#F6F4EF" fill-opacity="0.9"/>
+  <rect x="332" y="262" width="60" height="60" rx="14" fill="#E8EEF2"/>
+  <rect x="402" y="262" width="60" height="60" rx="14" fill="#E8EEF2"/>
+  <rect x="472" y="262" width="60" height="60" rx="14" fill="#E8EEF2"/>
+  <rect x="332" y="332" width="60" height="60" rx="14" fill="#E8EEF2"/>
+  <rect x="402" y="332" width="60" height="60" rx="14" fill="#E8EEF2"/>
+  <rect x="472" y="332" width="60" height="60" rx="14" fill="#E8EEF2"/>
+  <rect x="332" y="402" width="60" height="60" rx="14" fill="#E8EEF2"/>
+  <rect x="402" y="402" width="130" height="60" rx="14" fill="#D97C1F"/>
+  <rect x="332" y="472" width="200" height="34" rx="17" fill="#0F6E6B"/>
+  <text x="90" y="90" fill="#1F2933" font-family="Sora, Arial, sans-serif" font-size="36" font-weight="700">Scientific Calculator</text>
+</svg>

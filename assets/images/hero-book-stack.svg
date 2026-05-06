@@ -1,0 +1,35 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F4C5C"/>
+      <stop offset="1" stop-color="#1F2933"/>
+    </linearGradient>
+    <linearGradient id="cover1" x1="0" y1="0" x2="0" y2="1" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F4A261"/>
+      <stop offset="1" stop-color="#D97C1F"/>
+    </linearGradient>
+    <linearGradient id="cover2" x1="0" y1="0" x2="0" y2="1" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#E9EEF2"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" rx="48" fill="url(#bg)"/>
+  <circle cx="960" cy="160" r="170" fill="#F4A261" fill-opacity="0.16"/>
+  <circle cx="220" cy="740" r="220" fill="#2A9D8F" fill-opacity="0.16"/>
+  <rect x="190" y="590" width="820" height="110" rx="28" fill="#0B1320" fill-opacity="0.28"/>
+  <rect x="280" y="240" width="640" height="390" rx="38" fill="#FFFFFF" fill-opacity="0.08" stroke="#FFFFFF" stroke-opacity="0.18"/>
+  <g transform="translate(350 210)">
+    <rect x="0" y="140" width="500" height="92" rx="20" fill="#1F2933"/>
+    <rect x="10" y="120" width="470" height="92" rx="20" fill="#0F6E6B"/>
+    <rect x="20" y="98" width="440" height="92" rx="20" fill="url(#cover1)"/>
+    <rect x="30" y="76" width="410" height="92" rx="20" fill="url(#cover2)"/>
+    <rect x="50" y="96" width="105" height="16" rx="8" fill="#0F4C5C"/>
+    <rect x="50" y="126" width="178" height="16" rx="8" fill="#C9D4DE"/>
+    <rect x="50" y="156" width="132" height="16" rx="8" fill="#C9D4DE"/>
+    <rect x="340" y="58" width="72" height="170" rx="18" fill="#E76F51"/>
+    <rect x="380" y="40" width="72" height="170" rx="18" fill="#2A9D8F"/>
+    <rect x="70" y="180" width="370" height="22" rx="11" fill="#FFFFFF" fill-opacity="0.22"/>
+  </g>
+  <text x="86" y="132" fill="#F8FAFC" fill-opacity="0.9" font-family="Sora, Arial, sans-serif" font-size="42" font-weight="700">Mary Bookshop</text>
+  <text x="86" y="184" fill="#D7E0E8" font-family="Sora, Arial, sans-serif" font-size="22">Modern book and stationery essentials</text>
+</svg>
