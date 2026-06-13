@@ -226,10 +226,12 @@
         <form id="orderForm">
             <label>Your Name</label>
             <input type="text" id="custName" placeholder="e.g. John Doe" required>
+            <span id="nameError" class="error-msg" style="color: #d93025; font-size: 0.85rem; display: none;">Please enter your name</span>
             
             <label>Items to Order</label>
             <textarea id="custOrder" rows="4" placeholder="e.g. 1x Hodi ya Mashairi, 2x Exercise Books" required></textarea>
-            
+            <span id="orderError" class="error-msg" style="color: #d93025; font-size: 0.85rem; display: none;">Please describe what you want to order</span>
+
             <button type="button" class="btn block" onclick="sendOrder()">
                 <i class="fab fa-whatsapp"></i> Send Order via WhatsApp
             </button>
@@ -329,18 +331,26 @@
         }
     }
 
-    function switchView(viewName) {
+    function switchView(viewName, shouldScroll = true) {
         const homeView = document.getElementById('home-view');
         const orderView = document.getElementById('order-now');
         
         if (viewName === 'order') {
             homeView.style.display = 'none';
             orderView.style.display = 'block';
+            // Focus the first input for better UX
+            setTimeout(() => document.getElementById('custName').focus(), 100);
         } else {
             homeView.style.display = 'block';
             orderView.style.display = 'none';
         }
-        window.scrollTo(0,0);
+
+        if (shouldScroll) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Update URL hash without jumping
+        history.pushState(null, null, viewName === 'order' ? '#order-now' : '#home');
     }
 
     function prefillOrder(itemName) {
@@ -350,11 +360,29 @@
     }
 
     function sendOrder() {
-        var name = document.getElementById("custName").value;
-        var order = document.getElementById("custOrder").value;
-        if(name === "" || order === "") { alert("Please fill in all fields"); return; }
-        var message = "Hello Mary Bookshop, my name is " + name + ". I would like to order: " + order;
-        var url = "https://wa.me/254710236087?text=" + encodeURIComponent(message);
+        const nameInput = document.getElementById("custName");
+        const orderInput = document.getElementById("custOrder");
+        const nameError = document.getElementById("nameError");
+        const orderError = document.getElementById("orderError");
+
+        // Reset errors
+        nameError.style.display = 'none';
+        orderError.style.display = 'none';
+
+        let isValid = true;
+        if(!nameInput.value.trim()) {
+            nameError.style.display = 'block';
+            isValid = false;
+        }
+        if(!orderInput.value.trim()) {
+            orderError.style.display = 'block';
+            isValid = false;
+        }
+
+        if(!isValid) return;
+
+        const message = `Hello Mary Bookshop, my name is ${nameInput.value}. I would like to order:\n${orderInput.value}`;
+        const url = `https://wa.me/254710236087?text=${encodeURIComponent(message)}`;
         window.open(url, '_blank');
     }
 
@@ -363,9 +391,19 @@
         updateNavbarState();
 
         window.addEventListener('scroll', updateNavbarState, { passive: true });
+        
         window.addEventListener('resize', function() {
             if (window.innerWidth > 768) {
                 closeMenu();
+            }
+        });
+
+        // Handle browser back/forward buttons
+        window.addEventListener('popstate', function() {
+            if (window.location.hash === '#order-now') {
+                switchView('order', false);
+            } else {
+                switchView('home', false);
             }
         });
 
@@ -381,7 +419,7 @@
             const navTrigger = e.target.closest('[data-nav]');
             if (navTrigger) {
                 const targetView = navTrigger.getAttribute('data-nav');
-                switchView(targetView);
+                switchView(targetView, true);
                 closeMenu();
             }
 
