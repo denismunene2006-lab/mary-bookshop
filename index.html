@@ -10,7 +10,7 @@
 </head>
 <body>
 <nav class="navbar">
-    <a href="#home-view" class="nav-brand" onclick="showHome(); closeMenu();">Mary Bookshop</a>
+    <a href="#home" class="nav-brand" data-nav="home">Mary Bookshop</a>
     <div class="nav-menu">
         <button type="button" class="hamburger" aria-label="Toggle navigation" aria-expanded="false" onclick="toggleMenu()">
             <span></span>
@@ -18,11 +18,11 @@
             <span></span>
         </button>
         <div class="nav-links">
-            <a href="#about" onclick="showHome(); closeMenu();">ABOUT</a>
-            <a href="#products" onclick="showHome(); closeMenu();">PRODUCTS</a>
-            <a href="#order-now" onclick="showOrder(); closeMenu();">ORDER NOW</a>
-            <a href="#location" onclick="showHome(); closeMenu();">LOCATION</a>
-            <a href="#contact" onclick="showHome(); closeMenu();">CONTACT</a>
+            <a href="#about" data-nav="home">ABOUT</a>
+            <a href="#products" data-nav="home">PRODUCTS</a>
+            <a href="#order-now" data-nav="order">ORDER NOW</a>
+            <a href="#location" data-nav="home">LOCATION</a>
+            <a href="#contact" data-nav="home">CONTACT</a>
         </div>
     </div>
 </nav>
@@ -34,8 +34,8 @@
             <h1>Modern supplies for readers, learners, and schools.</h1>
             <p class="hero-text">Mary Bookshop is a friendly neighborhood demo shop for textbooks, story books, stationery, and school essentials. Clean picks, fair prices, and fast support when you need it.</p>
             <div class="hero-actions">
-                <a href="#products" class="btn primary" onclick="showHome()">Browse Products</a>
-                <a href="#order-now" class="btn ghost" onclick="showOrder()">Order on WhatsApp</a>
+                <a href="#products" class="btn primary" data-nav="home">Browse Products</a>
+                <a href="#order-now" class="btn ghost" data-nav="order">Order on WhatsApp</a>
             </div>
             <div class="hero-stats" aria-label="Shop highlights">
                 <div class="stat">
@@ -109,6 +109,7 @@
                 <h4>Exam Revision Guide</h4>
                 <p class="price">KES 850</p>
                 <p>Updated study guide with practice questions and quick summaries.</p>
+                <button class="btn ghost order-item-btn" data-item="Exam Revision Guide">Order This</button>
             </div>
         </div>
         <!-- Card 2 -->
@@ -118,6 +119,7 @@
                 <h4>Bestseller Novels</h4>
                 <p class="price">KES 600</p>
                 <p>Fresh fiction and popular reads from current shelves.</p>
+                <button class="btn ghost order-item-btn" data-item="Bestseller Novels">Order This</button>
             </div>
         </div>
         <!-- Card 3 -->
@@ -127,6 +129,7 @@
                 <h4>Spiral Notebooks</h4>
                 <p class="price">KES 450</p>
                 <p>Neat notebooks for lectures, notes, and daily journaling.</p>
+                <button class="btn ghost order-item-btn" data-item="Spiral Notebooks">Order This</button>
             </div>
         </div>
         <!-- Card 4 -->
@@ -136,6 +139,7 @@
                 <h4>Pen and Highlighter Set</h4>
                 <p class="price">From KES 180</p>
                 <p>Modern study essentials for marking, writing, and revision.</p>
+                <button class="btn ghost order-item-btn" data-item="Pen and Highlighter Set">Order This</button>
             </div>
         </div>
         <!-- Card 5 -->
@@ -145,6 +149,7 @@
                 <h4>Planner Journal</h4>
                 <p class="price">KES 700</p>
                 <p>Weekly planning pages for school, work, and personal goals.</p>
+                <button class="btn ghost order-item-btn" data-item="Planner Journal">Order This</button>
             </div>
         </div>
         <!-- Card 6 -->
@@ -154,6 +159,7 @@
                 <h4>School Backpack</h4>
                 <p class="price">KES 1,200</p>
                 <p>Durable, comfortable, and ready for daily school use.</p>
+                <button class="btn ghost order-item-btn" data-item="School Backpack">Order This</button>
             </div>
         </div>
         <!-- Card 7 -->
@@ -163,6 +169,7 @@
                 <h4>Scientific Calculator</h4>
                 <p class="price">KES 1,500</p>
                 <p>Reliable calculator for math, science, and exam work.</p>
+                <button class="btn ghost order-item-btn" data-item="Scientific Calculator">Order This</button>
             </div>
         </div>
         <!-- Card 8 -->
@@ -172,6 +179,7 @@
                 <h4>Sticky Notes & Book Marks</h4>
                 <p class="price">From KES 120</p>
                 <p>Handy accessories for quick reminders and page marking.</p>
+                <button class="btn ghost order-item-btn" data-item="Sticky Notes & Book Marks">Order This</button>
             </div>
         </div>
     </div>
@@ -225,7 +233,7 @@
             <button type="button" class="btn block" onclick="sendOrder()">
                 <i class="fab fa-whatsapp"></i> Send Order via WhatsApp
             </button>
-            <p style="text-align: center; margin-top: 15px;"><a href="#" onclick="showHome()" style="color: #666;">Back to Home</a></p>
+            <p style="text-align: center; margin-top: 15px;"><a href="#" data-nav="home" style="color: #666;">Back to Home</a></p>
         </form>
     </div>
 </section>
@@ -321,16 +329,24 @@
         }
     }
 
-    function showHome() {
-        document.getElementById('home-view').style.display = 'block';
-        document.getElementById('order-now').style.display = 'none';
+    function switchView(viewName) {
+        const homeView = document.getElementById('home-view');
+        const orderView = document.getElementById('order-now');
+        
+        if (viewName === 'order') {
+            homeView.style.display = 'none';
+            orderView.style.display = 'block';
+        } else {
+            homeView.style.display = 'block';
+            orderView.style.display = 'none';
+        }
         window.scrollTo(0,0);
     }
 
-    function showOrder() {
-        document.getElementById('home-view').style.display = 'none';
-        document.getElementById('order-now').style.display = 'block';
-        window.scrollTo(0,0);
+    function prefillOrder(itemName) {
+        switchView('order');
+        const orderTextarea = document.getElementById('custOrder');
+        orderTextarea.value = "1x " + itemName;
     }
 
     function sendOrder() {
@@ -357,6 +373,23 @@
             const navMenu = document.querySelector('.nav-menu');
             if (navMenu && navMenu.classList.contains('open') && !navMenu.contains(event.target)) {
                 closeMenu();
+            }
+        });
+
+        // Global Navigation Handler
+        document.body.addEventListener('click', function(e) {
+            const navTrigger = e.target.closest('[data-nav]');
+            if (navTrigger) {
+                const targetView = navTrigger.getAttribute('data-nav');
+                switchView(targetView);
+                closeMenu();
+            }
+
+            // Order item handler
+            const orderBtn = e.target.closest('.order-item-btn');
+            if (orderBtn) {
+                const itemName = orderBtn.getAttribute('data-item');
+                prefillOrder(itemName);
             }
         });
     });
