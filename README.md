@@ -103,9 +103,6 @@ Aspiring Web Developer passionate about building real-world business websites.
 - 🌐 [GitHub](https://github.com/denismunene2006-lab)
 - 📧 Reach out via the [contact section](https://denismunene2006-lab.github.io/mary-bookshop/#contact) on the website
 
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
