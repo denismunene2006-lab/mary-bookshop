@@ -23,6 +23,20 @@ A polished, business-ready front-end built with vanilla HTML, CSS, and JavaScrip
 - **Accessibility** — Reduced motion support, `aria-expanded` toggle state, focus-visible outlines, and semantic landmarks.
 - **Hero Entry Animations** — Staggered fade-in for the hero copy, actions, and stat highlights on load.
 
+## Brand Colors
+
+| Token                | Color       | Usage                                      |
+|----------------------|-------------|--------------------------------------------|
+| Primary              | `#F57A1B`   | Buttons, links, badges, accents, active states |
+| Primary Dark         | `#D96A12`   | Hover states, darker accents               |
+| Primary Deeper       | `#B85A0E`   | Focus borders, strong highlights           |
+| Primary Deep         | `#8A4208`   | Text on light backgrounds, strong borders  |
+| Primary Very Dark    | `#5C2B05`   | Navbar, footer, hero gradients             |
+| Primary Light        | `#FDE8D0`   | Light backgrounds, card surfaces           |
+| Primary Lighter      | `#FEF3E6`   | Subtle backgrounds, hover states           |
+| Background (Cream)   | `#FFEFD5`   | Main page background, section surfaces     |
+| Border               | `#F0D9B0`   | Card borders, input borders                |
+
 ## Tech Stack
 
 | Layer    | Technology             |

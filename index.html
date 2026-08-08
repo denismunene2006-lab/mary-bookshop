@@ -235,7 +235,7 @@
             <button type="button" class="btn block" onclick="sendOrder()">
                 <i class="fab fa-whatsapp"></i> Send Order via WhatsApp
             </button>
-            <p style="text-align: center; margin-top: 15px;"><a href="#" data-nav="home" style="color: #666;">Back to Home</a></p>
+            <p style="text-align: center; margin-top: 15px;"><a href="#" data-nav="home" style="color: #8A4208;">Back to Home</a></p>
         </form>
     </div>
 </section>
@@ -354,9 +354,12 @@
     }
 
     function prefillOrder(itemName) {
-        switchView('order');
+        switchView('order', false);
         const orderTextarea = document.getElementById('custOrder');
         orderTextarea.value = "1x " + itemName;
+        setTimeout(function() {
+            document.getElementById('order-now').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 80);
     }
 
     function sendOrder() {
