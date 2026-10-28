@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Mary Bookshop — Books, Stationery & School Essentials in Karurumo</title>
-    <meta name="description" content="Mary Bookshop in Karurumo — textbooks, story books, stationery, and school essentials. Order easily via WhatsApp.">
-    <link rel="stylesheet" href="style.css?v=3">
+    <title>Page &amp; Palette — Books, Stationery &amp; School Essentials in Kilimani</title>
+    <meta name="description" content="Page & Palette is a modern bookshop and stationery store in Kilimani, Nairobi. Textbooks, novels, notebooks, pens, bags and more. Order easily via WhatsApp.">
+    <link rel="stylesheet" href="style.css?v=4">
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,20 +15,23 @@
 
 <!-- Announcement bar -->
 <div class="announcement" id="announcement">
-    <div class="announcement-inner">
-        <i data-lucide="truck"></i>
-        <span>Free delivery within Karurumo on orders over KES 2,000</span>
-        <button class="announcement-close" onclick="document.getElementById('announcement').remove()" aria-label="Dismiss">
-            <i data-lucide="x"></i>
-        </button>
+    <div class="announcement-track">
+        <span class="ann-item"><i data-lucide="truck"></i> Free delivery in Kilimani on orders over KES 2,000</span>
+        <span class="ann-dot"></span>
+        <span class="ann-item"><i data-lucide="badge-percent"></i> 10% off back-to-school bundles this month</span>
+        <span class="ann-dot"></span>
+        <span class="ann-item"><i data-lucide="clock"></i> Open Mon–Sat 8:30 AM – 7:00 PM</span>
     </div>
+    <button class="announcement-close" onclick="document.getElementById('announcement').remove()" aria-label="Dismiss">
+        <i data-lucide="x"></i>
+    </button>
 </div>
 
 <!-- Navbar -->
 <nav class="navbar" id="navbar">
     <a href="#home" class="nav-brand" data-nav="home">
         <span class="brand-mark"><i data-lucide="book-open"></i></span>
-        <span class="brand-text">Mary Bookshop</span>
+        <span class="brand-text">Page <span class="amp">&amp;</span> Palette</span>
     </a>
     <div class="nav-menu" id="navMenu">
         <button type="button" class="hamburger" aria-label="Toggle navigation" aria-expanded="false" onclick="toggleMenu()">
@@ -38,8 +41,8 @@
             <a href="#about" data-nav="home">About</a>
             <a href="#products" data-nav="home">Shop</a>
             <a href="#categories" data-nav="home">Categories</a>
+            <a href="#why" data-nav="home">Why Us</a>
             <a href="#location" data-nav="home">Visit</a>
-            <a href="#contact" data-nav="home">Contact</a>
             <a href="#order-now" class="nav-cta" data-nav="order">
                 <i data-lucide="shopping-bag"></i> Order Now
             </a>
@@ -51,9 +54,9 @@
 <header class="hero" id="home">
     <div class="hero-inner">
         <div class="hero-copy">
-            <span class="eyebrow"><i data-lucide="sparkles"></i> Karurumo · Books & Stationery</span>
-            <h1>Everything a reader<br><span class="grad-text">and learner needs.</span></h1>
-            <p class="hero-text">Mary Bookshop is your friendly neighbourhood store for textbooks, story books, stationery, and school essentials. Curated picks, fair prices, and same-day support around Karurumo.</p>
+            <span class="eyebrow"><i data-lucide="sparkles"></i> Kilimani, Nairobi · Books &amp; Stationery</span>
+            <h1>Where every page<br><span class="grad-text">meets its palette.</span></h1>
+            <p class="hero-text">Page &amp; Palette is a modern bookshop and stationery store in the heart of Kilimani. Curated textbooks, bestsellers, journals, and school essentials — with fair prices and same-day delivery across Nairobi.</p>
             <div class="hero-actions">
                 <a href="#products" class="btn primary" data-nav="home">
                     <i data-lucide="compass"></i> Browse the Shop
@@ -66,32 +69,32 @@
                 <div class="stat">
                     <div class="stat-icon"><i data-lucide="library"></i></div>
                     <div class="stat-body">
-                        <strong>500+</strong>
-                        <span>Titles & essentials</span>
+                        <strong class="count-up" data-target="500" data-suffix="+">0</strong>
+                        <span>Titles &amp; essentials</span>
                     </div>
                 </div>
                 <div class="stat">
-                    <div class="stat-icon"><i data-lucide="zap"></i></div>
+                    <div class="stat-icon"><i data-lucide="users"></i></div>
                     <div class="stat-body">
-                        <strong>Same-day</strong>
-                        <span>Delivery in Karurumo</span>
+                        <strong class="count-up" data-target="1200" data-suffix="+">0</strong>
+                        <span>Happy customers</span>
                     </div>
                 </div>
                 <div class="stat">
                     <div class="stat-icon"><i data-lucide="graduation-cap"></i></div>
                     <div class="stat-body">
-                        <strong>School-ready</strong>
-                        <span>Books, bags & stationery</span>
+                        <strong class="count-up" data-target="30" data-suffix="+">0</strong>
+                        <span>Schools served</span>
                     </div>
                 </div>
             </div>
         </div>
         <div class="hero-visual">
-            <div class="hero-image-card">
-                <img src="https://images.pexels.com/photos/6946037/pexels-photo-6946037.jpeg?auto=compress&cs=tinysrgb&w=1100" alt="Cozy bookshop interior with wooden shelves" loading="eager">
+            <div class="hero-image-card" data-parallax="0.04">
+                <img src="https://images.pexels.com/photos/32517434/pexels-photo-32517434.jpeg?auto=compress&cs=tinysrgb&w=1100" alt="Inviting bookshop interior with shelves of books" loading="eager">
                 <div class="hero-image-badge">
                     <i data-lucide="map-pin"></i>
-                    <span>Karurumo, Kenya</span>
+                    <span>Kilimani, Nairobi</span>
                 </div>
             </div>
             <div class="hero-float-card hero-float-1">
@@ -116,30 +119,59 @@
     </a>
 </header>
 
+<!-- Marquee strip -->
+<div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+        <span><i data-lucide="book-open"></i> Textbooks</span>
+        <span><i data-lucide="feather"></i> Novels</span>
+        <span><i data-lucide="notebook-pen"></i> Notebooks</span>
+        <span><i data-lucide="pen-tool"></i> Pens &amp; Highlighters</span>
+        <span><i data-lucide="briefcase"></i> Backpacks</span>
+        <span><i data-lucide="calculator"></i> Calculators</span>
+        <span><i data-lucide="bookmark"></i> Bookmarks</span>
+        <span><i data-lucide="palette"></i> Art Supplies</span>
+        <span><i data-lucide="book-open"></i> Textbooks</span>
+        <span><i data-lucide="feather"></i> Novels</span>
+        <span><i data-lucide="notebook-pen"></i> Notebooks</span>
+        <span><i data-lucide="pen-tool"></i> Pens &amp; Highlighters</span>
+        <span><i data-lucide="briefcase"></i> Backpacks</span>
+        <span><i data-lucide="calculator"></i> Calculators</span>
+        <span><i data-lucide="bookmark"></i> Bookmarks</span>
+        <span><i data-lucide="palette"></i> Art Supplies</span>
+    </div>
+</div>
+
 <div id="home-view">
 
-<!-- About / Trust -->
+<!-- About -->
 <section id="about" class="section">
-    <div class="section-head reveal-target">
-        <span class="kicker"><i data-lucide="store"></i> About Us</span>
-        <h2>Your trusted partner in education</h2>
-        <p>Welcome to <strong>Mary Bookshop</strong> — a friendly neighbourhood store in Karurumo stocking quality textbooks, story books, and essential stationery at fair prices for students, teachers, and parents.</p>
-    </div>
-    <div class="info-cards">
-        <div class="info-card reveal-target">
-            <div class="info-icon"><i data-lucide="book-marked"></i></div>
-            <h4>Curated for Schools</h4>
-            <p>We stock titles aligned with local curricula and popular set books.</p>
+    <div class="about-grid">
+        <div class="about-visual reveal-target">
+            <div class="about-img-stack">
+                <img src="https://images.pexels.com/photos/34149049/pexels-photo-34149049.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Warm bookshop shelves" loading="lazy">
+                <img src="https://images.pexels.com/photos/4865724/pexels-photo-4865724.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Wrapping books in store" loading="lazy" class="about-img-small">
+            </div>
+            <div class="about-badge">
+                <i data-lucide="award"></i>
+                <div>
+                    <strong>Est. 2018</strong>
+                    <span>Trusted in Kilimani</span>
+                </div>
+            </div>
         </div>
-        <div class="info-card reveal-target">
-            <div class="info-icon"><i data-lucide="tags"></i></div>
-            <h4>Affordable Bundles</h4>
-            <p>Save more with exercise book packs and stationery bundles.</p>
-        </div>
-        <div class="info-card reveal-target">
-            <div class="info-icon"><i data-lucide="heart-handshake"></i></div>
-            <h4>Friendly Support</h4>
-            <p>Need help choosing? We guide you to the right materials.</p>
+        <div class="about-content reveal-target">
+            <span class="kicker"><i data-lucide="store"></i> About Us</span>
+            <h2>More than a bookshop — a learning partner</h2>
+            <p>Page &amp; Palette was born from a simple idea: every reader, student, and school in Kilimani deserves a well-stocked, welcoming store with honest prices and genuine advice. Six years later, we're proud to be the neighbourhood's go-to for textbooks, stationery, and school essentials.</p>
+            <ul class="about-list">
+                <li><i data-lucide="check-circle-2"></i> Titles aligned with the Kenyan curriculum and popular set books</li>
+                <li><i data-lucide="check-circle-2"></i> Affordable exercise-book packs and stationery bundles</li>
+                <li><i data-lucide="check-circle-2"></i> Same-day delivery across Kilimani and nearby estates</li>
+                <li><i data-lucide="check-circle-2"></i> Friendly, knowledgeable staff who help you choose</li>
+            </ul>
+            <a href="#products" class="btn primary" data-nav="home">
+                <i data-lucide="arrow-right"></i> Explore Products
+            </a>
         </div>
     </div>
 </section>
@@ -154,32 +186,32 @@
     <div class="category-grid">
         <button class="category-card reveal-target" data-cat="Textbooks & Revision">
             <div class="cat-icon"><i data-lucide="book-open-check"></i></div>
-            <span>Textbooks & Revision</span>
+            <span>Textbooks &amp; Revision</span>
             <i data-lucide="arrow-right" class="cat-arrow"></i>
         </button>
         <button class="category-card reveal-target" data-cat="Story Books & Novels">
             <div class="cat-icon"><i data-lucide="book-marked"></i></div>
-            <span>Story Books & Novels</span>
+            <span>Story Books &amp; Novels</span>
             <i data-lucide="arrow-right" class="cat-arrow"></i>
         </button>
         <button class="category-card reveal-target" data-cat="Notebooks & Journals">
             <div class="cat-icon"><i data-lucide="notebook-pen"></i></div>
-            <span>Notebooks & Journals</span>
+            <span>Notebooks &amp; Journals</span>
             <i data-lucide="arrow-right" class="cat-arrow"></i>
         </button>
         <button class="category-card reveal-target" data-cat="Pens & Highlighters">
             <div class="cat-icon"><i data-lucide="pen-tool"></i></div>
-            <span>Pens & Highlighters</span>
+            <span>Pens &amp; Highlighters</span>
             <i data-lucide="arrow-right" class="cat-arrow"></i>
         </button>
         <button class="category-card reveal-target" data-cat="Bags & Backpacks">
             <div class="cat-icon"><i data-lucide="briefcase"></i></div>
-            <span>Bags & Backpacks</span>
+            <span>Bags &amp; Backpacks</span>
             <i data-lucide="arrow-right" class="cat-arrow"></i>
         </button>
         <button class="category-card reveal-target" data-cat="Calculators & Accessories">
             <div class="cat-icon"><i data-lucide="calculator"></i></div>
-            <span>Calculators & Accessories</span>
+            <span>Calculators &amp; Accessories</span>
             <i data-lucide="arrow-right" class="cat-arrow"></i>
         </button>
     </div>
@@ -190,7 +222,7 @@
     <div class="section-head reveal-target">
         <span class="kicker"><i data-lucide="shopping-bag"></i> Popular Picks</span>
         <h2>Featured products</h2>
-        <p>Trusted by families and teachers across Karurumo for everyday school essentials.</p>
+        <p>Trusted by families and teachers across Kilimani for everyday school essentials.</p>
     </div>
     <div class="product-toolbar reveal-target">
         <div class="search-box">
@@ -205,10 +237,10 @@
         </div>
     </div>
     <div class="product-grid" id="productGrid">
-        <!-- Card 1 -->
+        <!-- Card 1 — Exam Revision Guide -->
         <div class="product-card reveal-target" data-name="exam revision guide" data-cat="books">
             <div class="product-media">
-                <img src="https://images.pexels.com/photos/2002217/pexels-photo-2002217.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Exam Revision Guide" loading="lazy">
+                <img src="https://images.pexels.com/photos/11288844/pexels-photo-11288844.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Open study guide with eyeglasses on a warm surface" loading="lazy">
                 <span class="product-badge">Popular</span>
             </div>
             <div class="product-info">
@@ -223,10 +255,10 @@
                 </div>
             </div>
         </div>
-        <!-- Card 2 -->
+        <!-- Card 2 — Bestseller Novels -->
         <div class="product-card reveal-target" data-name="bestseller novels" data-cat="books">
             <div class="product-media">
-                <img src="https://images.pexels.com/photos/8145576/pexels-photo-8145576.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Bestseller Novels" loading="lazy">
+                <img src="https://images.pexels.com/photos/7998492/pexels-photo-7998492.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Hands holding a stack of paperback novels" loading="lazy">
                 <span class="product-badge new">New</span>
             </div>
             <div class="product-info">
@@ -241,15 +273,15 @@
                 </div>
             </div>
         </div>
-        <!-- Card 3 -->
+        <!-- Card 3 — Spiral Notebooks -->
         <div class="product-card reveal-target" data-name="spiral notebooks" data-cat="stationery">
             <div class="product-media">
-                <img src="https://images.pexels.com/photos/8230968/pexels-photo-8230968.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Spiral Notebooks" loading="lazy">
+                <img src="https://images.pexels.com/photos/8039752/pexels-photo-8039752.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Blue spiral-bound notebooks and papers" loading="lazy">
             </div>
             <div class="product-info">
                 <span class="product-cat">Notebooks</span>
                 <h4>Spiral Notebooks</h4>
-                <p>Neat notebooks for lectures, notes, and daily journaling.</p>
+                <p>Neat spiral notebooks for lectures, notes, and daily journaling.</p>
                 <div class="product-foot">
                     <p class="price">KES 450</p>
                     <button class="btn small order-item-btn" data-item="Spiral Notebooks">
@@ -258,15 +290,15 @@
                 </div>
             </div>
         </div>
-        <!-- Card 4 -->
+        <!-- Card 4 — Pen & Highlighter Set -->
         <div class="product-card reveal-target" data-name="pen and highlighter set" data-cat="stationery">
             <div class="product-media">
-                <img src="https://images.pexels.com/photos/8119804/pexels-photo-8119804.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Pen and Highlighter Set" loading="lazy">
+                <img src="https://images.pexels.com/photos/8119804/pexels-photo-8119804.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Notebook with colorful pens and sticky notes" loading="lazy">
                 <span class="product-badge">Best seller</span>
             </div>
             <div class="product-info">
                 <span class="product-cat">Pens</span>
-                <h4>Pen & Highlighter Set</h4>
+                <h4>Pen &amp; Highlighter Set</h4>
                 <p>Modern study essentials for marking, writing, and revision.</p>
                 <div class="product-foot">
                     <p class="price">From KES 180</p>
@@ -276,10 +308,10 @@
                 </div>
             </div>
         </div>
-        <!-- Card 5 -->
+        <!-- Card 5 — Planner Journal -->
         <div class="product-card reveal-target" data-name="planner journal" data-cat="stationery">
             <div class="product-media">
-                <img src="https://images.pexels.com/photos/8086416/pexels-photo-8086416.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Planner Journal" loading="lazy">
+                <img src="https://images.pexels.com/photos/5518867/pexels-photo-5518867.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Weekly planner with office supplies on a desk" loading="lazy">
                 <span class="product-badge new">New</span>
             </div>
             <div class="product-info">
@@ -294,10 +326,10 @@
                 </div>
             </div>
         </div>
-        <!-- Card 6 -->
+        <!-- Card 6 — School Backpack -->
         <div class="product-card reveal-target" data-name="school backpack" data-cat="accessories">
             <div class="product-media">
-                <img src="https://images.pexels.com/photos/20818683/pexels-photo-20818683.jpeg?auto=compress&cs=tinysrgb&w=700" alt="School Backpack" loading="lazy">
+                <img src="https://images.pexels.com/photos/20818683/pexels-photo-20818683.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Student with a school backpack" loading="lazy">
             </div>
             <div class="product-info">
                 <span class="product-cat">Bags</span>
@@ -311,10 +343,10 @@
                 </div>
             </div>
         </div>
-        <!-- Card 7 -->
+        <!-- Card 7 — Scientific Calculator -->
         <div class="product-card reveal-target" data-name="scientific calculator" data-cat="accessories">
             <div class="product-media">
-                <img src="https://images.pexels.com/photos/8617769/pexels-photo-8617769.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Scientific Calculator" loading="lazy">
+                <img src="https://images.pexels.com/photos/16282318/pexels-photo-16282318.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Person writing calculations with pen on documents" loading="lazy">
             </div>
             <div class="product-info">
                 <span class="product-cat">Calculators</span>
@@ -328,14 +360,14 @@
                 </div>
             </div>
         </div>
-        <!-- Card 8 -->
+        <!-- Card 8 — Sticky Notes & Bookmarks -->
         <div class="product-card reveal-target" data-name="sticky notes bookmarks" data-cat="stationery">
             <div class="product-media">
-                <img src="https://images.pexels.com/photos/28921196/pexels-photo-28921196.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Sticky Notes & Bookmarks" loading="lazy">
+                <img src="https://images.pexels.com/photos/17210072/pexels-photo-17210072.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Colorful sticky notes on a surface" loading="lazy">
             </div>
             <div class="product-info">
                 <span class="product-cat">Accessories</span>
-                <h4>Sticky Notes & Bookmarks</h4>
+                <h4>Sticky Notes &amp; Bookmarks</h4>
                 <p>Handy accessories for quick reminders and page marking.</p>
                 <div class="product-foot">
                     <p class="price">From KES 120</p>
@@ -349,8 +381,13 @@
     <p class="no-results" id="noResults" style="display:none;">No products match your search.</p>
 </section>
 
-<!-- Why choose us / Features strip -->
-<section class="section">
+<!-- Why choose us / Features -->
+<section id="why" class="section">
+    <div class="section-head reveal-target">
+        <span class="kicker"><i data-lucide="award"></i> Why Page &amp; Palette</span>
+        <h2>What makes us different</h2>
+        <p>We go beyond stocking shelves — we help you find exactly what you need, fast.</p>
+    </div>
     <div class="features-strip">
         <div class="feature reveal-target">
             <div class="feature-icon"><i data-lucide="package-check"></i></div>
@@ -363,14 +400,14 @@
             <div class="feature-icon"><i data-lucide="bike"></i></div>
             <div>
                 <h4>Fast Local Delivery</h4>
-                <p>Same-day drop-off anywhere around Karurumo.</p>
+                <p>Same-day drop-off anywhere in Kilimani and nearby estates.</p>
             </div>
         </div>
         <div class="feature reveal-target">
             <div class="feature-icon"><i data-lucide="wallet"></i></div>
             <div>
                 <h4>Fair Pricing</h4>
-                <p>Honest prices with bundle savings for schools.</p>
+                <p>Honest prices with bundle savings for schools and families.</p>
             </div>
         </div>
         <div class="feature reveal-target">
@@ -383,17 +420,66 @@
     </div>
 </section>
 
-<!-- Location -->
+<!-- Testimonials -->
+<section class="section">
+    <div class="section-head reveal-target">
+        <span class="kicker"><i data-lucide="quote"></i> Reviews</span>
+        <h2>Loved by Kilimani</h2>
+        <p>Here's what our customers and partner schools say about us.</p>
+    </div>
+    <div class="testimonial-grid">
+        <div class="testimonial-card reveal-target">
+            <div class="stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
+            <p>"Page &amp; Palette sorted out our entire back-to-school list in one afternoon. The bundle pricing saved us a lot."</p>
+            <div class="t-author">
+                <div class="t-avatar">WA</div>
+                <div>
+                    <strong>Wanjiru A.</strong>
+                    <span>Parent, Kilimani</span>
+                </div>
+            </div>
+        </div>
+        <div class="testimonial-card reveal-target">
+            <div class="stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
+            <p>"Their set-book selection is always current and the staff know the curriculum. My go-to for class supplies."</p>
+            <div class="t-author">
+                <div class="t-avatar">MO</div>
+                <div>
+                    <strong>Mr. Otieno</strong>
+                    <span>Teacher, Nairobi</span>
+                </div>
+            </div>
+        </div>
+        <div class="testimonial-card reveal-target">
+            <div class="stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
+            <p>"Ordered three novels on WhatsApp and they arrived the same evening. Genuinely the easiest shop to deal with."</p>
+            <div class="t-author">
+                <div class="t-avatar">AK</div>
+                <div>
+                    <strong>Aisha K.</strong>
+                    <span>Student, University of Nairobi</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Location with map -->
 <section id="location" class="section section-alt">
     <div class="location-grid">
         <div class="location-info reveal-target">
             <span class="kicker"><i data-lucide="map-pin"></i> Visit Us</span>
-            <h2>Find us in Karurumo</h2>
-            <p>Opposite Wamwanga Butchery, Karurumo town. Pop in any day — we're happy to help you find the right book or supply.</p>
+            <h2>Find us in Kilimani</h2>
+            <p>Located on Argwings Kodhek Road, opposite Yaya Centre. Pop in any day — we're happy to help you find the right book or supply.</p>
             <ul class="hours-list">
-                <li><span>Mon – Sat</span><strong>8:30 AM – 7:00 PM</strong></li>
-                <li><span>Sunday</span><strong>2:30 PM – 8:00 PM</strong></li>
+                <li><span><i data-lucide="calendar-days"></i> Monday – Saturday</span><strong>8:30 AM – 7:00 PM</strong></li>
+                <li><span><i data-lucide="calendar-days"></i> Sunday</span><strong>2:30 PM – 8:00 PM</strong></li>
+                <li><span><i data-lucide="calendar-days"></i> Public Holidays</span><strong>10:00 AM – 4:00 PM</strong></li>
             </ul>
+            <div class="location-meta">
+                <div class="lm-item"><i data-lucide="phone"></i> <span>0710 236 087</span></div>
+                <div class="lm-item"><i data-lucide="mail"></i> <span>hello@pageandpalette.co.ke</span></div>
+            </div>
             <div class="location-cta">
                 <a href="https://wa.me/254710236087" class="btn whatsapp">
                     <i data-lucide="message-circle"></i> WhatsApp Us
@@ -401,18 +487,23 @@
                 <a href="tel:0710236087" class="btn outline">
                     <i data-lucide="phone"></i> Call Us
                 </a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Argwings+Kodhek+Road+Kilimani+Nairobi" target="_blank" rel="noopener" class="btn outline">
+                    <i data-lucide="navigation"></i> Get Directions
+                </a>
             </div>
         </div>
         <div class="location-map reveal-target">
-            <div class="map-placeholder">
-                <i data-lucide="map"></i>
-                <span>Karurumo town<br>Opposite Wamwanga Butchery</span>
-            </div>
+            <iframe
+                src="https://www.google.com/maps?q=Argwings+Kodhek+Road,+Kilimani,+Nairobi,+Kenya&output=embed"
+                title="Map showing Page & Palette location in Kilimani, Nairobi"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen></iframe>
         </div>
     </div>
 </section>
 
-<!-- Contact -->
+<!-- Contact / CTA band -->
 <section id="contact" class="section">
     <div class="contact-band reveal-target">
         <div class="contact-text">
@@ -431,20 +522,53 @@
     </div>
 </section>
 
+<!-- FAQ -->
+<section class="section">
+    <div class="section-head reveal-target">
+        <span class="kicker"><i data-lucide="help-circle"></i> FAQ</span>
+        <h2>Questions, answered</h2>
+    </div>
+    <div class="faq-list">
+        <details class="faq-item reveal-target">
+            <summary>Do you deliver outside Kilimani? <i data-lucide="chevron-down"></i></summary>
+            <p>Yes. We deliver across Nairobi. Kilimani orders are free over KES 2,000; other areas are charged a small fee based on distance.</p>
+        </details>
+        <details class="faq-item reveal-target">
+            <summary>Can I order for a whole school or class? <i data-lucide="chevron-down"></i></summary>
+            <p>Absolutely. Send us your supply list on WhatsApp and we'll prepare a custom quote with bundle discounts for bulk orders.</p>
+        </details>
+        <details class="faq-item reveal-target">
+            <summary>Do you stock the current Kenyan set books? <i data-lucide="chevron-down"></i></summary>
+            <p>Yes — we keep up with the latest approved set books for both primary and secondary levels. Call ahead to confirm stock.</p>
+        </details>
+        <details class="faq-item reveal-target">
+            <summary>What payment methods do you accept? <i data-lucide="chevron-down"></i></summary>
+            <p>We accept M-Pesa, cash on delivery, and bank transfers for bulk orders. WhatsApp us and we'll share the details.</p>
+        </details>
+    </div>
+</section>
+
 <footer>
     <div class="footer-inner">
         <div class="footer-brand">
             <span class="brand-mark"><i data-lucide="book-open"></i></span>
-            <span>Mary Bookshop</span>
+            <span>Page &amp; Palette</span>
         </div>
-        <p>Serving Karurumo with pride — books, stationery, and school essentials for every learner.</p>
+        <p>A modern bookshop and stationery store in Kilimani, Nairobi — serving readers, learners, and schools with pride.</p>
         <div class="footer-links">
             <a href="#about" data-nav="home">About</a>
             <a href="#products" data-nav="home">Shop</a>
+            <a href="#why" data-nav="home">Why Us</a>
             <a href="#location" data-nav="home">Visit</a>
             <a href="#order-now" data-nav="order">Order</a>
         </div>
-        <p class="footer-copy">&copy; 2026 Mary Bookshop. All rights reserved.</p>
+        <div class="footer-social">
+            <a href="https://wa.me/254710236087" aria-label="WhatsApp"><i data-lucide="message-circle"></i></a>
+            <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+            <a href="tel:0710236087" aria-label="Phone"><i data-lucide="phone"></i></a>
+        </div>
+        <p class="footer-copy">&copy; 2026 Page &amp; Palette. All rights reserved. · Kilimani, Nairobi, Kenya</p>
     </div>
 </footer>
 
@@ -465,13 +589,17 @@
                 <span id="nameError" class="error-msg">Please enter your name</span>
             </div>
             <div class="field">
+                <label for="custPhone">Phone Number</label>
+                <input type="tel" id="custPhone" placeholder="e.g. 0712 345 678">
+            </div>
+            <div class="field">
                 <label for="custOrder">Items to Order</label>
                 <textarea id="custOrder" rows="4" placeholder="e.g. 1x Exam Revision Guide, 2x Spiral Notebooks" required></textarea>
                 <span id="orderError" class="error-msg">Please describe what you want to order</span>
             </div>
             <div class="field">
-                <label for="custPhone">Phone <span class="optional">(optional)</span></label>
-                <input type="tel" id="custPhone" placeholder="e.g. 0712 345 678">
+                <label for="custNote">Delivery Note <span class="optional">(optional)</span></label>
+                <input type="text" id="custNote" placeholder="e.g. Deliver to Yaya Apartments, C12">
             </div>
             <button type="button" class="btn block whatsapp" onclick="sendOrder()">
                 <i data-lucide="message-circle"></i> Send Order via WhatsApp
@@ -484,6 +612,14 @@
 <!-- Toast -->
 <div class="toast" id="toast"><i data-lucide="check-circle-2"></i> <span id="toastMsg">Added to your order</span></div>
 
+<!-- Scroll progress bar -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- Back to top -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i data-lucide="arrow-up"></i>
+</button>
+
 <script>
     let revealObserver;
     let activeFilter = 'all';
@@ -495,19 +631,30 @@
     function updateNavbarState() {
         const navbar = document.getElementById('navbar');
         if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 24);
+        const progress = document.getElementById('scrollProgress');
+        if (progress) {
+            const h = document.documentElement.scrollHeight - window.innerHeight;
+            progress.style.transform = 'scaleX(' + (h > 0 ? window.scrollY / h : 0) + ')';
+        }
+        const btt = document.getElementById('backToTop');
+        if (btt) btt.classList.toggle('show', window.scrollY > 600);
     }
 
     function setupRevealAnimations() {
         const revealGroups = [
+            { selector: '#home-view .about-visual', step: 0 },
+            { selector: '#home-view .about-content', step: 0 },
             { selector: '#home-view .section-head', step: 0 },
             { selector: '#home-view .info-card', step: 90 },
             { selector: '#home-view .category-card', step: 70 },
             { selector: '#home-view .product-toolbar', step: 0 },
             { selector: '#home-view .product-card', step: 70 },
             { selector: '#home-view .feature', step: 80 },
+            { selector: '#home-view .testimonial-card', step: 80 },
             { selector: '#home-view .location-info', step: 0 },
             { selector: '#home-view .location-map', step: 0 },
             { selector: '#home-view .contact-band', step: 0 },
+            { selector: '#home-view .faq-item', step: 60 },
             { selector: 'footer', step: 0 }
         ];
 
@@ -542,6 +689,48 @@
             el.dataset.revealObserved = 'true';
             revealObserver.observe(el);
         });
+    }
+
+    function setupCountUp() {
+        const counters = document.querySelectorAll('.count-up');
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            counters.forEach(function(el) {
+                el.textContent = el.dataset.target + (el.dataset.suffix || '');
+            });
+            return;
+        }
+        const observer = new IntersectionObserver(function(entries, obs) {
+            entries.forEach(function(entry) {
+                if (!entry.isIntersecting) return;
+                const el = entry.target;
+                const target = parseInt(el.dataset.target, 10);
+                const suffix = el.dataset.suffix || '';
+                const duration = 1600;
+                const start = performance.now();
+                function tick(now) {
+                    const p = Math.min((now - start) / duration, 1);
+                    const eased = 1 - Math.pow(1 - p, 3);
+                    el.textContent = Math.floor(eased * target).toLocaleString() + (p === 1 ? suffix : '');
+                    if (p < 1) requestAnimationFrame(tick);
+                    else el.textContent = target.toLocaleString() + suffix;
+                }
+                requestAnimationFrame(tick);
+                obs.unobserve(el);
+            });
+        }, { threshold: 0.5 });
+        counters.forEach(function(c) { observer.observe(c); });
+    }
+
+    function setupParallax() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        const items = document.querySelectorAll('[data-parallax]');
+        if (!items.length) return;
+        window.addEventListener('scroll', function() {
+            items.forEach(function(el) {
+                const speed = parseFloat(el.dataset.parallax);
+                el.style.transform = 'translateY(' + (window.scrollY * speed) + 'px)';
+            });
+        }, { passive: true });
     }
 
     function toggleMenu() {
@@ -592,11 +781,7 @@
         const orderTextarea = document.getElementById('custOrder');
         const current = orderTextarea.value.trim();
         const line = '1x ' + itemName;
-        if (current) {
-            orderTextarea.value = current + '\n' + line;
-        } else {
-            orderTextarea.value = line;
-        }
+        orderTextarea.value = current ? current + '\n' + line : line;
         showToast(itemName + ' added to your order');
         setTimeout(function() {
             document.getElementById('order-now').scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -607,6 +792,7 @@
         const nameInput = document.getElementById('custName');
         const orderInput = document.getElementById('custOrder');
         const phoneInput = document.getElementById('custPhone');
+        const noteInput = document.getElementById('custNote');
         const nameError = document.getElementById('nameError');
         const orderError = document.getElementById('orderError');
 
@@ -618,8 +804,9 @@
         if (!orderInput.value.trim()) { orderError.style.display = 'block'; isValid = false; }
         if (!isValid) return;
 
-        let message = 'Hello Mary Bookshop, my name is ' + nameInput.value + '. I would like to order:\n' + orderInput.value;
+        let message = 'Hello Page & Palette, my name is ' + nameInput.value + '. I would like to order:\n' + orderInput.value;
         if (phoneInput.value.trim()) message += '\nMy phone: ' + phoneInput.value.trim();
+        if (noteInput.value.trim()) message += '\nDelivery note: ' + noteInput.value.trim();
         const url = 'https://wa.me/254710236087?text=' + encodeURIComponent(message);
         window.open(url, '_blank');
     }
@@ -643,6 +830,8 @@
     document.addEventListener('DOMContentLoaded', function() {
         lucideRefresh();
         setupRevealAnimations();
+        setupCountUp();
+        setupParallax();
         updateNavbarState();
 
         window.addEventListener('scroll', updateNavbarState, { passive: true });
@@ -661,6 +850,7 @@
         document.body.addEventListener('click', function(e) {
             const navTrigger = e.target.closest('[data-nav]');
             if (navTrigger) {
+                e.preventDefault();
                 const targetView = navTrigger.getAttribute('data-nav');
                 switchView(targetView, true);
                 closeMenu();
@@ -682,7 +872,6 @@
             }
         });
 
-        // Filter chips
         document.getElementById('filterChips').addEventListener('click', function(e) {
             const chip = e.target.closest('.chip');
             if (!chip) return;
@@ -692,8 +881,11 @@
             filterProducts();
         });
 
-        // Search
         document.getElementById('productSearch').addEventListener('input', filterProducts);
+
+        document.getElementById('backToTop').addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
     });
 </script>
 </body>
