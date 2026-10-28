@@ -575,12 +575,48 @@
     </div>
 </aside>
 
-<!-- Checkout Section -->
-<section id="checkout" class="section section-alt" style="display:none; margin-top:90px;">
-    <div class="checkout-wrap">
-        <div class="checkout-head">
-            <span class="kicker"><i data-lucide="shopping-bag"></i> Checkout</span>
-            <h2 class="no-rule">Complete your order</h2>
+<!-- Checkout Page -->
+<div id="checkout" class="checkout-page" style="display:none;">
+    <!-- Checkout top bar -->
+    <div class="checkout-topbar">
+        <div class="checkout-topbar-inner">
+            <button class="checkout-back-btn" onclick="backToShop()">
+                <i data-lucide="arrow-left"></i> Back to Shop
+            </button>
+            <a href="#home" class="nav-brand" onclick="backToShop(); return false;">
+                <span class="brand-mark"><i data-lucide="book-open"></i></span>
+                <span class="brand-text">Page <span class="amp">&amp;</span> Palette</span>
+            </a>
+            <button class="checkout-back-btn ghost" onclick="openCart()">
+                <i data-lucide="shopping-cart"></i> Edit Cart
+            </button>
+        </div>
+    </div>
+
+    <!-- Step indicator -->
+    <div class="checkout-steps">
+        <div class="step-indicator">
+            <div class="step done">
+                <span class="step-num"><i data-lucide="check"></i></span>
+                <span class="step-label">Cart</span>
+            </div>
+            <div class="step-line active"></div>
+            <div class="step active">
+                <span class="step-num">2</span>
+                <span class="step-label">Checkout</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step">
+                <span class="step-num">3</span>
+                <span class="step-label">Confirm</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout body -->
+    <div class="checkout-body">
+        <div class="checkout-page-head">
+            <h2>Complete your order</h2>
             <p>Review your items, add your delivery details, and send your order via WhatsApp.</p>
         </div>
         <div class="checkout-grid">
@@ -614,11 +650,37 @@
                 <button class="btn block whatsapp" onclick="sendCheckoutOrder()">
                     <i data-lucide="message-circle"></i> Send Order via WhatsApp
                 </button>
-                <p class="back-link"><a href="#" onclick="backToCart(); return false;"><i data-lucide="arrow-left"></i> Back to Cart</a></p>
+                <p class="checkout-secure"><i data-lucide="shield-check"></i> Your details are sent directly to our shop — no account needed.</p>
+            </div>
+        </div>
+        <div class="checkout-bottom-nav">
+            <button class="btn outline" onclick="backToShop()">
+                <i data-lucide="arrow-left"></i> Continue Shopping
+            </button>
+            <button class="btn outline" onclick="openCart()">
+                <i data-lucide="shopping-cart"></i> Back to Cart
+            </button>
+        </div>
+    </div>
+
+    <!-- Success screen -->
+    <div class="checkout-success" id="checkoutSuccess" style="display:none;">
+        <div class="success-card">
+            <div class="success-icon"><i data-lucide="check-circle-2"></i></div>
+            <h2>Order sent!</h2>
+            <p>Your order has been drafted in WhatsApp. Just hit send there and we'll take care of the rest.</p>
+            <div class="success-summary" id="successSummary"></div>
+            <div class="success-actions">
+                <button class="btn primary" onclick="backToShop()">
+                    <i data-lucide="store"></i> Back to Shop
+                </button>
+                <a href="https://wa.me/254710236087" target="_blank" rel="noopener" class="btn whatsapp">
+                    <i data-lucide="message-circle"></i> Open WhatsApp
+                </a>
             </div>
         </div>
     </div>
-</section>
+</div>
 
 <!-- Toast -->
 <div class="toast" id="toast"><i data-lucide="check-circle-2"></i> <span id="toastMsg">Added to cart</span></div>
@@ -914,10 +976,26 @@
     function showCheckout() {
         document.getElementById('home-view').style.display = 'none';
         document.getElementById('checkout').style.display = 'block';
+        document.getElementById('checkoutSuccess').style.display = 'none';
+        document.querySelector('.checkout-body').style.display = 'block';
+        document.body.style.overflow = 'auto';
         lucideRefresh();
         updateCheckout();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 0, behavior: 'auto' });
         history.pushState(null, null, '#checkout');
+    }
+
+    function showCheckoutSuccess() {
+        var summaryEl = document.getElementById('successSummary');
+        summaryEl.innerHTML = '<div class="cart-row"><span>Items</span><strong>' + cartCount() + '</strong></div>' +
+            '<div class="cart-row"><span>Total</span><strong>' + formatKES(cartTotal()) + '</strong></div>';
+        document.querySelector('.checkout-body').style.display = 'none';
+        document.getElementById('checkoutSuccess').style.display = 'flex';
+        cart = [];
+        saveCart();
+        updateCartBadge();
+        lucideRefresh();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function updateCheckout() {
@@ -968,6 +1046,7 @@
 
         const url = 'https://wa.me/254710236087?text=' + encodeURIComponent(message);
         window.open(url, '_blank');
+        showCheckoutSuccess();
     }
 
     function backToCart() {
@@ -982,6 +1061,7 @@
     function backToShop() {
         document.getElementById('checkout').style.display = 'none';
         document.getElementById('home-view').style.display = 'block';
+        document.getElementById('checkoutSuccess').style.display = 'none';
         lucideRefresh();
         setupRevealAnimations();
         history.pushState(null, null, '#home');
@@ -1052,6 +1132,11 @@
                 setupRevealAnimations();
             }
         });
+
+        // Open checkout if arriving with #checkout in the URL
+        if (window.location.hash === '#checkout' && cart.length > 0) {
+            showCheckout();
+        }
 
         document.addEventListener('click', function(event) {
             const navMenu = document.getElementById('navMenu');
