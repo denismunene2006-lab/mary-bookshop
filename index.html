@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Page &amp; Palette — Books, Stationery &amp; School Essentials in Kilimani</title>
     <meta name="description" content="Page & Palette is a modern bookshop and stationery store in Kilimani, Nairobi. Textbooks, novels, notebooks, pens, bags and more. Order easily via WhatsApp.">
-    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="stylesheet" href="style.css?v=5">
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,14 +38,15 @@
             <span></span><span></span><span></span>
         </button>
         <div class="nav-links">
-            <a href="#about" data-nav="home">About</a>
-            <a href="#products" data-nav="home">Shop</a>
-            <a href="#categories" data-nav="home">Categories</a>
-            <a href="#why" data-nav="home">Why Us</a>
-            <a href="#location" data-nav="home">Visit</a>
-            <a href="#order-now" class="nav-cta" data-nav="order">
-                <i data-lucide="shopping-bag"></i> Order Now
-            </a>
+            <a href="#about" data-nav="home" data-scroll="about">About</a>
+            <a href="#products" data-nav="home" data-scroll="products">Shop</a>
+            <a href="#categories" data-nav="home" data-scroll="categories">Categories</a>
+            <a href="#why" data-nav="home" data-scroll="why">Why Us</a>
+            <a href="#location" data-nav="home" data-scroll="location">Visit</a>
+            <button class="nav-cta cart-trigger" id="cartTrigger" aria-label="Open cart">
+                <i data-lucide="shopping-cart"></i> Cart
+                <span class="cart-badge" id="cartBadge" style="display:none;">0</span>
+            </button>
         </div>
     </div>
 </nav>
@@ -58,12 +59,12 @@
             <h1>Where every page<br><span class="grad-text">meets its palette.</span></h1>
             <p class="hero-text">Page &amp; Palette is a modern bookshop and stationery store in the heart of Kilimani. Curated textbooks, bestsellers, journals, and school essentials — with fair prices and same-day delivery across Nairobi.</p>
             <div class="hero-actions">
-                <a href="#products" class="btn primary" data-nav="home">
+                <a href="#products" class="btn primary" data-nav="home" data-scroll="products">
                     <i data-lucide="compass"></i> Browse the Shop
                 </a>
-                <a href="#order-now" class="btn ghost" data-nav="order">
-                    <i data-lucide="message-circle"></i> Order on WhatsApp
-                </a>
+                <button class="btn ghost" onclick="openCart()">
+                    <i data-lucide="shopping-cart"></i> View Cart
+                </button>
             </div>
             <div class="hero-stats">
                 <div class="stat">
@@ -113,7 +114,7 @@
             </div>
         </div>
     </div>
-    <a href="#about" class="hero-scroll-cue" data-nav="home" aria-label="Scroll to about">
+    <a href="#about" class="hero-scroll-cue" data-nav="home" data-scroll="about" aria-label="Scroll to about">
         <span>Scroll</span>
         <i data-lucide="chevron-down"></i>
     </a>
@@ -169,7 +170,7 @@
                 <li><i data-lucide="check-circle-2"></i> Same-day delivery across Kilimani and nearby estates</li>
                 <li><i data-lucide="check-circle-2"></i> Friendly, knowledgeable staff who help you choose</li>
             </ul>
-            <a href="#products" class="btn primary" data-nav="home">
+            <a href="#products" class="btn primary" data-nav="home" data-scroll="products">
                 <i data-lucide="arrow-right"></i> Explore Products
             </a>
         </div>
@@ -184,32 +185,32 @@
         <p>Jump straight to what you need — from revision guides to everyday stationery.</p>
     </div>
     <div class="category-grid">
-        <button class="category-card reveal-target" data-cat="Textbooks & Revision">
+        <button class="category-card reveal-target" data-cat="Textbooks & Revision" data-filter-cat="books">
             <div class="cat-icon"><i data-lucide="book-open-check"></i></div>
             <span>Textbooks &amp; Revision</span>
             <i data-lucide="arrow-right" class="cat-arrow"></i>
         </button>
-        <button class="category-card reveal-target" data-cat="Story Books & Novels">
+        <button class="category-card reveal-target" data-cat="Story Books & Novels" data-filter-cat="books">
             <div class="cat-icon"><i data-lucide="book-marked"></i></div>
             <span>Story Books &amp; Novels</span>
             <i data-lucide="arrow-right" class="cat-arrow"></i>
         </button>
-        <button class="category-card reveal-target" data-cat="Notebooks & Journals">
+        <button class="category-card reveal-target" data-cat="Notebooks & Journals" data-filter-cat="stationery">
             <div class="cat-icon"><i data-lucide="notebook-pen"></i></div>
             <span>Notebooks &amp; Journals</span>
             <i data-lucide="arrow-right" class="cat-arrow"></i>
         </button>
-        <button class="category-card reveal-target" data-cat="Pens & Highlighters">
+        <button class="category-card reveal-target" data-cat="Pens & Highlighters" data-filter-cat="stationery">
             <div class="cat-icon"><i data-lucide="pen-tool"></i></div>
             <span>Pens &amp; Highlighters</span>
             <i data-lucide="arrow-right" class="cat-arrow"></i>
         </button>
-        <button class="category-card reveal-target" data-cat="Bags & Backpacks">
+        <button class="category-card reveal-target" data-cat="Bags & Backpacks" data-filter-cat="accessories">
             <div class="cat-icon"><i data-lucide="briefcase"></i></div>
             <span>Bags &amp; Backpacks</span>
             <i data-lucide="arrow-right" class="cat-arrow"></i>
         </button>
-        <button class="category-card reveal-target" data-cat="Calculators & Accessories">
+        <button class="category-card reveal-target" data-cat="Calculators & Accessories" data-filter-cat="accessories">
             <div class="cat-icon"><i data-lucide="calculator"></i></div>
             <span>Calculators &amp; Accessories</span>
             <i data-lucide="arrow-right" class="cat-arrow"></i>
@@ -248,9 +249,9 @@
                 <h4>Exam Revision Guide</h4>
                 <p>Updated study guide with practice questions and quick summaries.</p>
                 <div class="product-foot">
-                    <p class="price">KES 850</p>
-                    <button class="btn small order-item-btn" data-item="Exam Revision Guide">
-                        <i data-lucide="plus"></i> Order
+                    <p class="price" data-price="850">KES 850</p>
+                    <button class="btn small add-to-cart-btn" data-item="Exam Revision Guide" data-price="850">
+                        <i data-lucide="cart-plus"></i> Add to Cart
                     </button>
                 </div>
             </div>
@@ -266,9 +267,9 @@
                 <h4>Bestseller Novels</h4>
                 <p>Fresh fiction and popular reads from current shelves.</p>
                 <div class="product-foot">
-                    <p class="price">KES 600</p>
-                    <button class="btn small order-item-btn" data-item="Bestseller Novels">
-                        <i data-lucide="plus"></i> Order
+                    <p class="price" data-price="600">KES 600</p>
+                    <button class="btn small add-to-cart-btn" data-item="Bestseller Novels" data-price="600">
+                        <i data-lucide="cart-plus"></i> Add to Cart
                     </button>
                 </div>
             </div>
@@ -283,9 +284,9 @@
                 <h4>Spiral Notebooks</h4>
                 <p>Neat spiral notebooks for lectures, notes, and daily journaling.</p>
                 <div class="product-foot">
-                    <p class="price">KES 450</p>
-                    <button class="btn small order-item-btn" data-item="Spiral Notebooks">
-                        <i data-lucide="plus"></i> Order
+                    <p class="price" data-price="450">KES 450</p>
+                    <button class="btn small add-to-cart-btn" data-item="Spiral Notebooks" data-price="450">
+                        <i data-lucide="cart-plus"></i> Add to Cart
                     </button>
                 </div>
             </div>
@@ -301,9 +302,9 @@
                 <h4>Pen &amp; Highlighter Set</h4>
                 <p>Modern study essentials for marking, writing, and revision.</p>
                 <div class="product-foot">
-                    <p class="price">From KES 180</p>
-                    <button class="btn small order-item-btn" data-item="Pen & Highlighter Set">
-                        <i data-lucide="plus"></i> Order
+                    <p class="price" data-price="180">From KES 180</p>
+                    <button class="btn small add-to-cart-btn" data-item="Pen & Highlighter Set" data-price="180">
+                        <i data-lucide="cart-plus"></i> Add to Cart
                     </button>
                 </div>
             </div>
@@ -319,9 +320,9 @@
                 <h4>Planner Journal</h4>
                 <p>Weekly planning pages for school, work, and personal goals.</p>
                 <div class="product-foot">
-                    <p class="price">KES 700</p>
-                    <button class="btn small order-item-btn" data-item="Planner Journal">
-                        <i data-lucide="plus"></i> Order
+                    <p class="price" data-price="700">KES 700</p>
+                    <button class="btn small add-to-cart-btn" data-item="Planner Journal" data-price="700">
+                        <i data-lucide="cart-plus"></i> Add to Cart
                     </button>
                 </div>
             </div>
@@ -336,9 +337,9 @@
                 <h4>School Backpack</h4>
                 <p>Durable, comfortable, and ready for daily school use.</p>
                 <div class="product-foot">
-                    <p class="price">KES 1,200</p>
-                    <button class="btn small order-item-btn" data-item="School Backpack">
-                        <i data-lucide="plus"></i> Order
+                    <p class="price" data-price="1200">KES 1,200</p>
+                    <button class="btn small add-to-cart-btn" data-item="School Backpack" data-price="1200">
+                        <i data-lucide="cart-plus"></i> Add to Cart
                     </button>
                 </div>
             </div>
@@ -353,9 +354,9 @@
                 <h4>Scientific Calculator</h4>
                 <p>Reliable calculator for math, science, and exam work.</p>
                 <div class="product-foot">
-                    <p class="price">KES 1,500</p>
-                    <button class="btn small order-item-btn" data-item="Scientific Calculator">
-                        <i data-lucide="plus"></i> Order
+                    <p class="price" data-price="1500">KES 1,500</p>
+                    <button class="btn small add-to-cart-btn" data-item="Scientific Calculator" data-price="1500">
+                        <i data-lucide="cart-plus"></i> Add to Cart
                     </button>
                 </div>
             </div>
@@ -370,9 +371,9 @@
                 <h4>Sticky Notes &amp; Bookmarks</h4>
                 <p>Handy accessories for quick reminders and page marking.</p>
                 <div class="product-foot">
-                    <p class="price">From KES 120</p>
-                    <button class="btn small order-item-btn" data-item="Sticky Notes & Bookmarks">
-                        <i data-lucide="plus"></i> Order
+                    <p class="price" data-price="120">From KES 120</p>
+                    <button class="btn small add-to-cart-btn" data-item="Sticky Notes & Bookmarks" data-price="120">
+                        <i data-lucide="cart-plus"></i> Add to Cart
                     </button>
                 </div>
             </div>
@@ -391,31 +392,19 @@
     <div class="features-strip">
         <div class="feature reveal-target">
             <div class="feature-icon"><i data-lucide="package-check"></i></div>
-            <div>
-                <h4>Quality Assured</h4>
-                <p>Only genuine, durable products from trusted suppliers.</p>
-            </div>
+            <div><h4>Quality Assured</h4><p>Only genuine, durable products from trusted suppliers.</p></div>
         </div>
         <div class="feature reveal-target">
             <div class="feature-icon"><i data-lucide="bike"></i></div>
-            <div>
-                <h4>Fast Local Delivery</h4>
-                <p>Same-day drop-off anywhere in Kilimani and nearby estates.</p>
-            </div>
+            <div><h4>Fast Local Delivery</h4><p>Same-day drop-off anywhere in Kilimani and nearby estates.</p></div>
         </div>
         <div class="feature reveal-target">
             <div class="feature-icon"><i data-lucide="wallet"></i></div>
-            <div>
-                <h4>Fair Pricing</h4>
-                <p>Honest prices with bundle savings for schools and families.</p>
-            </div>
+            <div><h4>Fair Pricing</h4><p>Honest prices with bundle savings for schools and families.</p></div>
         </div>
         <div class="feature reveal-target">
             <div class="feature-icon"><i data-lucide="messages-square"></i></div>
-            <div>
-                <h4>Easy WhatsApp Orders</h4>
-                <p>Send your list and get a quick reply — no app needed.</p>
-            </div>
+            <div><h4>Easy WhatsApp Orders</h4><p>Send your cart and get a quick reply — no app needed.</p></div>
         </div>
     </div>
 </section>
@@ -431,35 +420,17 @@
         <div class="testimonial-card reveal-target">
             <div class="stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
             <p>"Page &amp; Palette sorted out our entire back-to-school list in one afternoon. The bundle pricing saved us a lot."</p>
-            <div class="t-author">
-                <div class="t-avatar">WA</div>
-                <div>
-                    <strong>Wanjiru A.</strong>
-                    <span>Parent, Kilimani</span>
-                </div>
-            </div>
+            <div class="t-author"><div class="t-avatar">WA</div><div><strong>Wanjiru A.</strong><span>Parent, Kilimani</span></div></div>
         </div>
         <div class="testimonial-card reveal-target">
             <div class="stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
             <p>"Their set-book selection is always current and the staff know the curriculum. My go-to for class supplies."</p>
-            <div class="t-author">
-                <div class="t-avatar">MO</div>
-                <div>
-                    <strong>Mr. Otieno</strong>
-                    <span>Teacher, Nairobi</span>
-                </div>
-            </div>
+            <div class="t-author"><div class="t-avatar">MO</div><div><strong>Mr. Otieno</strong><span>Teacher, Nairobi</span></div></div>
         </div>
         <div class="testimonial-card reveal-target">
             <div class="stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
             <p>"Ordered three novels on WhatsApp and they arrived the same evening. Genuinely the easiest shop to deal with."</p>
-            <div class="t-author">
-                <div class="t-avatar">AK</div>
-                <div>
-                    <strong>Aisha K.</strong>
-                    <span>Student, University of Nairobi</span>
-                </div>
-            </div>
+            <div class="t-author"><div class="t-avatar">AK</div><div><strong>Aisha K.</strong><span>Student, University of Nairobi</span></div></div>
         </div>
     </div>
 </section>
@@ -515,9 +486,9 @@
             <a href="https://wa.me/254710236087" class="btn whatsapp">
                 <i data-lucide="message-circle"></i> Chat on WhatsApp
             </a>
-            <a href="#order-now" class="btn light" data-nav="order">
-                <i data-lucide="shopping-bag"></i> Place an Order
-            </a>
+            <button class="btn light" onclick="openCart()">
+                <i data-lucide="shopping-cart"></i> View Cart
+            </button>
         </div>
     </div>
 </section>
@@ -556,16 +527,16 @@
         </div>
         <p>A modern bookshop and stationery store in Kilimani, Nairobi — serving readers, learners, and schools with pride.</p>
         <div class="footer-links">
-            <a href="#about" data-nav="home">About</a>
-            <a href="#products" data-nav="home">Shop</a>
-            <a href="#why" data-nav="home">Why Us</a>
-            <a href="#location" data-nav="home">Visit</a>
-            <a href="#order-now" data-nav="order">Order</a>
+            <a href="#about" data-nav="home" data-scroll="about">About</a>
+            <a href="#products" data-nav="home" data-scroll="products">Shop</a>
+            <a href="#why" data-nav="home" data-scroll="why">Why Us</a>
+            <a href="#location" data-nav="home" data-scroll="location">Visit</a>
+            <a href="#faq" data-nav="home" data-scroll="faq">FAQ</a>
         </div>
         <div class="footer-social">
-            <a href="https://wa.me/254710236087" aria-label="WhatsApp"><i data-lucide="message-circle"></i></a>
-            <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
-            <a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+            <a href="https://wa.me/254710236087" target="_blank" rel="noopener" aria-label="WhatsApp"><i data-lucide="message-circle"></i></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+            <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i data-lucide="facebook"></i></a>
             <a href="tel:0710236087" aria-label="Phone"><i data-lucide="phone"></i></a>
         </div>
         <p class="footer-copy">&copy; 2026 Page &amp; Palette. All rights reserved. · Kilimani, Nairobi, Kenya</p>
@@ -574,43 +545,83 @@
 
 </div> <!-- End home-view -->
 
-<!-- Order Section -->
-<section id="order-now" class="section section-alt" style="display:none; margin-top:90px;">
-    <div class="form-box">
-        <div class="form-head">
-            <span class="kicker"><i data-lucide="shopping-bag"></i> Place an Order</span>
-            <h2 class="no-rule">Tell us what you need</h2>
-            <p>We'll draft your WhatsApp message instantly — just fill in the details below.</p>
+<!-- Cart Drawer -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
+    <div class="cart-header">
+        <h3><i data-lucide="shopping-cart"></i> Your Cart</h3>
+        <button class="cart-close" onclick="closeCart()" aria-label="Close cart"><i data-lucide="x"></i></button>
+    </div>
+    <div class="cart-body" id="cartBody">
+        <div class="cart-empty" id="cartEmpty">
+            <i data-lucide="shopping-cart"></i>
+            <p>Your cart is empty</p>
+            <span>Add some products to get started</span>
         </div>
-        <form id="orderForm" autocomplete="on">
-            <div class="field">
-                <label for="custName">Your Name</label>
-                <input type="text" id="custName" placeholder="e.g. John Doe" required>
-                <span id="nameError" class="error-msg">Please enter your name</span>
+        <div class="cart-items" id="cartItems"></div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none;">
+        <div class="cart-summary">
+            <div class="cart-row"><span>Subtotal</span><strong id="cartSubtotal">KES 0</strong></div>
+            <div class="cart-row"><span>Delivery</span><strong id="cartDelivery">Calculated at checkout</strong></div>
+            <div class="cart-row total"><span>Total</span><strong id="cartTotal">KES 0</strong></div>
+        </div>
+        <button class="btn block primary" onclick="goToCheckout()">
+            <i data-lucide="arrow-right"></i> Proceed to Checkout
+        </button>
+        <button class="btn block outline clear-cart-btn" onclick="clearCart()">
+            <i data-lucide="trash-2"></i> Clear Cart
+        </button>
+    </div>
+</aside>
+
+<!-- Checkout Section -->
+<section id="checkout" class="section section-alt" style="display:none; margin-top:90px;">
+    <div class="checkout-wrap">
+        <div class="checkout-head">
+            <span class="kicker"><i data-lucide="shopping-bag"></i> Checkout</span>
+            <h2 class="no-rule">Complete your order</h2>
+            <p>Review your items, add your delivery details, and send your order via WhatsApp.</p>
+        </div>
+        <div class="checkout-grid">
+            <div class="checkout-items" id="checkoutItems"></div>
+            <div class="checkout-form-box">
+                <h3><i data-lucide="user"></i> Your Details</h3>
+                <div class="field">
+                    <label for="ckName">Full Name</label>
+                    <input type="text" id="ckName" placeholder="e.g. John Doe">
+                    <span class="error-msg" id="ckNameError">Please enter your name</span>
+                </div>
+                <div class="field">
+                    <label for="ckPhone">Phone Number</label>
+                    <input type="tel" id="ckPhone" placeholder="e.g. 0712 345 678">
+                    <span class="error-msg" id="ckPhoneError">Please enter your phone number</span>
+                </div>
+                <div class="field">
+                    <label for="ckAddress">Delivery Address</label>
+                    <input type="text" id="ckAddress" placeholder="e.g. Yaya Apartments, C12, Kilimani">
+                    <span class="error-msg" id="ckAddressError">Please enter a delivery address</span>
+                </div>
+                <div class="field">
+                    <label for="ckNote">Delivery Note <span class="optional">(optional)</span></label>
+                    <input type="text" id="ckNote" placeholder="e.g. Call on arrival">
+                </div>
+                <div class="checkout-summary">
+                    <div class="cart-row"><span>Subtotal</span><strong id="ckSubtotal">KES 0</strong></div>
+                    <div class="cart-row"><span>Delivery</span><strong id="ckDelivery">Free</strong></div>
+                    <div class="cart-row total"><span>Total</span><strong id="ckTotal">KES 0</strong></div>
+                </div>
+                <button class="btn block whatsapp" onclick="sendCheckoutOrder()">
+                    <i data-lucide="message-circle"></i> Send Order via WhatsApp
+                </button>
+                <p class="back-link"><a href="#" onclick="backToCart(); return false;"><i data-lucide="arrow-left"></i> Back to Cart</a></p>
             </div>
-            <div class="field">
-                <label for="custPhone">Phone Number</label>
-                <input type="tel" id="custPhone" placeholder="e.g. 0712 345 678">
-            </div>
-            <div class="field">
-                <label for="custOrder">Items to Order</label>
-                <textarea id="custOrder" rows="4" placeholder="e.g. 1x Exam Revision Guide, 2x Spiral Notebooks" required></textarea>
-                <span id="orderError" class="error-msg">Please describe what you want to order</span>
-            </div>
-            <div class="field">
-                <label for="custNote">Delivery Note <span class="optional">(optional)</span></label>
-                <input type="text" id="custNote" placeholder="e.g. Deliver to Yaya Apartments, C12">
-            </div>
-            <button type="button" class="btn block whatsapp" onclick="sendOrder()">
-                <i data-lucide="message-circle"></i> Send Order via WhatsApp
-            </button>
-            <p class="back-link"><a href="#" data-nav="home"><i data-lucide="arrow-left"></i> Back to Home</a></p>
-        </form>
+        </div>
     </div>
 </section>
 
 <!-- Toast -->
-<div class="toast" id="toast"><i data-lucide="check-circle-2"></i> <span id="toastMsg">Added to your order</span></div>
+<div class="toast" id="toast"><i data-lucide="check-circle-2"></i> <span id="toastMsg">Added to cart</span></div>
 
 <!-- Scroll progress bar -->
 <div class="scroll-progress" id="scrollProgress"></div>
@@ -623,6 +634,7 @@
 <script>
     let revealObserver;
     let activeFilter = 'all';
+    let cart = [];
 
     function lucideRefresh() {
         if (window.lucide) window.lucide.createIcons();
@@ -749,23 +761,240 @@
         if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
     }
 
-    function switchView(viewName, shouldScroll) {
-        shouldScroll = shouldScroll !== undefined ? shouldScroll : true;
-        const homeView = document.getElementById('home-view');
-        const orderView = document.getElementById('order-now');
-        if (viewName === 'order') {
-            homeView.style.display = 'none';
-            orderView.style.display = 'block';
-            lucideRefresh();
-            setTimeout(function() { document.getElementById('custName').focus(); }, 100);
+    /* ---------- Cart Logic ---------- */
+
+    function formatKES(n) {
+        return 'KES ' + Number(n).toLocaleString();
+    }
+
+    function saveCart() {
+        try { localStorage.setItem('pp_cart', JSON.stringify(cart)); } catch(e) {}
+    }
+
+    function loadCart() {
+        try {
+            const raw = localStorage.getItem('pp_cart');
+            if (raw) cart = JSON.parse(raw);
+        } catch(e) { cart = []; }
+    }
+
+    function addToCart(name, price) {
+        const existing = cart.find(function(item) { return item.name === name; });
+        if (existing) {
+            existing.qty++;
         } else {
-            homeView.style.display = 'block';
-            orderView.style.display = 'none';
-            lucideRefresh();
-            setupRevealAnimations();
+            cart.push({ name: name, price: price, qty: 1 });
         }
-        if (shouldScroll) window.scrollTo({ top: 0, behavior: 'smooth' });
-        history.pushState(null, null, viewName === 'order' ? '#order-now' : '#home');
+        saveCart();
+        renderCart();
+        updateCartBadge();
+        showToast(name + ' added to cart');
+        openCart();
+    }
+
+    function changeQty(name, delta) {
+        const item = cart.find(function(i) { return i.name === name; });
+        if (!item) return;
+        item.qty += delta;
+        if (item.qty <= 0) {
+            cart = cart.filter(function(i) { return i.name !== name; });
+        }
+        saveCart();
+        renderCart();
+        updateCartBadge();
+        updateCheckout();
+    }
+
+    function removeItem(name) {
+        cart = cart.filter(function(i) { return i.name !== name; });
+        saveCart();
+        renderCart();
+        updateCartBadge();
+        updateCheckout();
+    }
+
+    function clearCart() {
+        cart = [];
+        saveCart();
+        renderCart();
+        updateCartBadge();
+        updateCheckout();
+        showToast('Cart cleared');
+    }
+
+    function cartCount() {
+        return cart.reduce(function(sum, i) { return sum + i.qty; }, 0);
+    }
+
+    function cartSubtotal() {
+        return cart.reduce(function(sum, i) { return sum + (i.price * i.qty); }, 0);
+    }
+
+    function cartDeliveryFee() {
+        const sub = cartSubtotal();
+        if (sub === 0) return 0;
+        if (sub >= 2000) return 0;
+        return 200;
+    }
+
+    function cartTotal() {
+        return cartSubtotal() + cartDeliveryFee();
+    }
+
+    function updateCartBadge() {
+        const badge = document.getElementById('cartBadge');
+        const count = cartCount();
+        if (count > 0) {
+            badge.textContent = count;
+            badge.style.display = 'inline-flex';
+        } else {
+            badge.style.display = 'none';
+        }
+    }
+
+    function renderCart() {
+        const body = document.getElementById('cartItems');
+        const empty = document.getElementById('cartEmpty');
+        const footer = document.getElementById('cartFooter');
+
+        if (cart.length === 0) {
+            body.innerHTML = '';
+            empty.style.display = 'flex';
+            footer.style.display = 'none';
+            return;
+        }
+
+        empty.style.display = 'none';
+        footer.style.display = 'flex';
+
+        body.innerHTML = cart.map(function(item) {
+            return '<div class="cart-item">' +
+                '<div class="ci-info">' +
+                    '<strong>' + item.name + '</strong>' +
+                    '<span>' + formatKES(item.price) + ' each</span>' +
+                '</div>' +
+                '<div class="ci-controls">' +
+                    '<button class="qty-btn" onclick="changeQty(\'' + item.name.replace(/'/g, "\\'") + '\', -1)" aria-label="Decrease"><i data-lucide="minus"></i></button>' +
+                    '<span class="ci-qty">' + item.qty + '</span>' +
+                    '<button class="qty-btn" onclick="changeQty(\'' + item.name.replace(/'/g, "\\'") + '\', 1)" aria-label="Increase"><i data-lucide="plus"></i></button>' +
+                    '<button class="ci-remove" onclick="removeItem(\'' + item.name.replace(/'/g, "\\'") + '\')" aria-label="Remove"><i data-lucide="trash-2"></i></button>' +
+                '</div>' +
+                '<div class="ci-price">' + formatKES(item.price * item.qty) + '</div>' +
+            '</div>';
+        }).join('');
+
+        document.getElementById('cartSubtotal').textContent = formatKES(cartSubtotal());
+        document.getElementById('cartDelivery').textContent = cartDeliveryFee() === 0 ? 'Free' : formatKES(cartDeliveryFee());
+        document.getElementById('cartTotal').textContent = formatKES(cartTotal());
+
+        lucideRefresh();
+    }
+
+    function openCart() {
+        document.getElementById('cartDrawer').classList.add('open');
+        document.getElementById('cartOverlay').classList.add('open');
+        document.body.style.overflow = 'hidden';
+        renderCart();
+    }
+
+    function closeCart() {
+        document.getElementById('cartDrawer').classList.remove('open');
+        document.getElementById('cartOverlay').classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    /* ---------- Checkout ---------- */
+
+    function goToCheckout() {
+        if (cart.length === 0) return;
+        closeCart();
+        showCheckout();
+    }
+
+    function showCheckout() {
+        document.getElementById('home-view').style.display = 'none';
+        document.getElementById('checkout').style.display = 'block';
+        lucideRefresh();
+        updateCheckout();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        history.pushState(null, null, '#checkout');
+    }
+
+    function updateCheckout() {
+        const itemsEl = document.getElementById('checkoutItems');
+        if (cart.length === 0) {
+            itemsEl.innerHTML = '<p class="checkout-empty">Your cart is empty. <a href="#" onclick="backToShop(); return false;">Continue shopping</a></p>';
+        } else {
+            itemsEl.innerHTML = '<h3><i data-lucide="package"></i> Order Summary</h3>' +
+                cart.map(function(item) {
+                    return '<div class="checkout-item">' +
+                        '<div class="co-info"><strong>' + item.qty + 'x ' + item.name + '</strong><span>' + formatKES(item.price) + ' each</span></div>' +
+                        '<div class="co-price">' + formatKES(item.price * item.qty) + '</div>' +
+                    '</div>';
+                }).join('');
+        }
+        document.getElementById('ckSubtotal').textContent = formatKES(cartSubtotal());
+        document.getElementById('ckDelivery').textContent = cartDeliveryFee() === 0 ? 'Free' : formatKES(cartDeliveryFee());
+        document.getElementById('ckTotal').textContent = formatKES(cartTotal());
+        lucideRefresh();
+    }
+
+    function sendCheckoutOrder() {
+        const name = document.getElementById('ckName');
+        const phone = document.getElementById('ckPhone');
+        const address = document.getElementById('ckAddress');
+        const note = document.getElementById('ckNote');
+
+        document.getElementById('ckNameError').style.display = 'none';
+        document.getElementById('ckPhoneError').style.display = 'none';
+        document.getElementById('ckAddressError').style.display = 'none';
+
+        let valid = true;
+        if (!name.value.trim()) { document.getElementById('ckNameError').style.display = 'block'; valid = false; }
+        if (!phone.value.trim()) { document.getElementById('ckPhoneError').style.display = 'block'; valid = false; }
+        if (!address.value.trim()) { document.getElementById('ckAddressError').style.display = 'block'; valid = false; }
+        if (!valid) return;
+
+        let message = 'Hello Page & Palette! My name is ' + name.value.trim() + '.\n\nI would like to order:\n';
+        cart.forEach(function(item) {
+            message += '• ' + item.qty + 'x ' + item.name + ' — ' + formatKES(item.price * item.qty) + '\n';
+        });
+        message += '\nSubtotal: ' + formatKES(cartSubtotal());
+        message += '\nDelivery: ' + (cartDeliveryFee() === 0 ? 'Free' : formatKES(cartDeliveryFee()));
+        message += '\nTotal: ' + formatKES(cartTotal());
+        message += '\n\nPhone: ' + phone.value.trim();
+        message += '\nDelivery address: ' + address.value.trim();
+        if (note.value.trim()) message += '\nNote: ' + note.value.trim();
+
+        const url = 'https://wa.me/254710236087?text=' + encodeURIComponent(message);
+        window.open(url, '_blank');
+    }
+
+    function backToCart() {
+        document.getElementById('checkout').style.display = 'none';
+        document.getElementById('home-view').style.display = 'block';
+        lucideRefresh();
+        setupRevealAnimations();
+        history.pushState(null, null, '#home');
+        setTimeout(function() { openCart(); }, 200);
+    }
+
+    function backToShop() {
+        document.getElementById('checkout').style.display = 'none';
+        document.getElementById('home-view').style.display = 'block';
+        lucideRefresh();
+        setupRevealAnimations();
+        history.pushState(null, null, '#home');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /* ---------- Navigation & Views ---------- */
+
+    function scrollToSection(id) {
+        const el = document.getElementById(id);
+        if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
     }
 
     function showToast(msg) {
@@ -774,41 +1003,6 @@
         toast.classList.add('show');
         clearTimeout(window._toastTimer);
         window._toastTimer = setTimeout(function() { toast.classList.remove('show'); }, 2400);
-    }
-
-    function prefillOrder(itemName) {
-        switchView('order', false);
-        const orderTextarea = document.getElementById('custOrder');
-        const current = orderTextarea.value.trim();
-        const line = '1x ' + itemName;
-        orderTextarea.value = current ? current + '\n' + line : line;
-        showToast(itemName + ' added to your order');
-        setTimeout(function() {
-            document.getElementById('order-now').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 80);
-    }
-
-    function sendOrder() {
-        const nameInput = document.getElementById('custName');
-        const orderInput = document.getElementById('custOrder');
-        const phoneInput = document.getElementById('custPhone');
-        const noteInput = document.getElementById('custNote');
-        const nameError = document.getElementById('nameError');
-        const orderError = document.getElementById('orderError');
-
-        nameError.style.display = 'none';
-        orderError.style.display = 'none';
-
-        let isValid = true;
-        if (!nameInput.value.trim()) { nameError.style.display = 'block'; isValid = false; }
-        if (!orderInput.value.trim()) { orderError.style.display = 'block'; isValid = false; }
-        if (!isValid) return;
-
-        let message = 'Hello Page & Palette, my name is ' + nameInput.value + '. I would like to order:\n' + orderInput.value;
-        if (phoneInput.value.trim()) message += '\nMy phone: ' + phoneInput.value.trim();
-        if (noteInput.value.trim()) message += '\nDelivery note: ' + noteInput.value.trim();
-        const url = 'https://wa.me/254710236087?text=' + encodeURIComponent(message);
-        window.open(url, '_blank');
     }
 
     function filterProducts() {
@@ -827,7 +1021,18 @@
         document.getElementById('noResults').style.display = visible === 0 ? 'block' : 'none';
     }
 
+    function setActiveFilter(filter) {
+        activeFilter = filter;
+        document.querySelectorAll('#filterChips .chip').forEach(function(c) {
+            c.classList.toggle('active', c.getAttribute('data-filter') === filter);
+        });
+        filterProducts();
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
+        loadCart();
+        updateCartBadge();
+
         lucideRefresh();
         setupRevealAnimations();
         setupCountUp();
@@ -838,8 +1043,14 @@
         window.addEventListener('resize', function() { if (window.innerWidth > 768) closeMenu(); });
 
         window.addEventListener('popstate', function() {
-            if (window.location.hash === '#order-now') switchView('order', false);
-            else switchView('home', false);
+            if (window.location.hash === '#checkout') {
+                showCheckout();
+            } else {
+                document.getElementById('checkout').style.display = 'none';
+                document.getElementById('home-view').style.display = 'block';
+                lucideRefresh();
+                setupRevealAnimations();
+            }
         });
 
         document.addEventListener('click', function(event) {
@@ -851,40 +1062,50 @@
             const navTrigger = e.target.closest('[data-nav]');
             if (navTrigger) {
                 e.preventDefault();
-                const targetView = navTrigger.getAttribute('data-nav');
-                switchView(targetView, true);
+                const scrollTarget = navTrigger.getAttribute('data-scroll');
+                if (scrollTarget) {
+                    scrollToSection(scrollTarget);
+                }
                 closeMenu();
             }
-            const orderBtn = e.target.closest('.order-item-btn');
-            if (orderBtn) {
-                prefillOrder(orderBtn.getAttribute('data-item'));
+            const addBtn = e.target.closest('.add-to-cart-btn');
+            if (addBtn) {
+                e.preventDefault();
+                addToCart(addBtn.getAttribute('data-item'), parseInt(addBtn.getAttribute('data-price'), 10));
             }
             const catCard = e.target.closest('.category-card');
             if (catCard) {
-                const cat = catCard.getAttribute('data-cat');
-                switchView('order', false);
-                const orderTextarea = document.getElementById('custOrder');
-                orderTextarea.value = (orderTextarea.value.trim() ? orderTextarea.value.trim() + '\n' : '') + 'Items from: ' + cat;
-                showToast('Added ' + cat + ' to your order');
-                setTimeout(function() {
-                    document.getElementById('order-now').scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }, 80);
+                const filterCat = catCard.getAttribute('data-filter-cat');
+                if (filterCat) {
+                    setActiveFilter(filterCat);
+                    scrollToSection('products');
+                    showToast('Showing ' + catCard.getAttribute('data-cat'));
+                }
             }
+        });
+
+        document.getElementById('cartTrigger').addEventListener('click', function(e) {
+            e.preventDefault();
+            openCart();
         });
 
         document.getElementById('filterChips').addEventListener('click', function(e) {
             const chip = e.target.closest('.chip');
             if (!chip) return;
-            document.querySelectorAll('#filterChips .chip').forEach(function(c) { c.classList.remove('active'); });
-            chip.classList.add('active');
-            activeFilter = chip.getAttribute('data-filter');
-            filterProducts();
+            setActiveFilter(chip.getAttribute('data-filter'));
         });
 
         document.getElementById('productSearch').addEventListener('input', filterProducts);
 
         document.getElementById('backToTop').addEventListener('click', function() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeCart();
+                closeMenu();
+            }
         });
     });
 </script>
