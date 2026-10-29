@@ -4,7 +4,7 @@ A modern, responsive website for **Page & Palette**, a neighborhood bookshop and
 
 ## Live Demo
 
-🌐 **Deploy to Netlify, Vercel, or GitHub Pages** — see [Deployment](#deployment) below.
+🌐 **Deploy to Netlify, Vercel, or GitHub Pages** — see [https://bookshop-delta-hazel.vercel.app/]
 
 ## Features
 
