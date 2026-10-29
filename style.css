@@ -266,6 +266,7 @@ img { max-width: 100%; display: block; }
     transform: translateX(100%);
     transition: transform var(--transition);
     overflow: hidden;
+    contain: layout style;
 }
 .cart-drawer.open { transform: translateX(0); }
 
@@ -385,11 +386,12 @@ img { max-width: 100%; display: block; }
 }
 
 .cart-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
     border-top: 1px solid var(--border);
     padding: 16px 20px;
     padding-bottom: max(16px, env(safe-area-inset-bottom));
-    flex-direction: column;
-    gap: 12px;
     flex-shrink: 0;
     background: var(--surface);
 }

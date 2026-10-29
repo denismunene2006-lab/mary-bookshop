@@ -1,0 +1,6 @@
+# Netlify redirects for clean URLs
+# Clean checkout URL
+/checkout  /checkout.html  200
+
+# SPA fallback for client-side routing (if needed)
+/*  /index.html  200

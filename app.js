@@ -1,5 +1,5 @@
 // Shared cart, checkout, and store logic for Page & Palette
-// Used by both index.html (homepage) and checkout/index.html (dedicated checkout page)
+// Used by both index.html (homepage) and checkout.html (dedicated checkout page)
 
 let revealObserver;
 let activeFilter = 'all';
@@ -291,7 +291,7 @@ function closeCart() {
 function goToCheckout() {
     if (cart.length === 0) return;
     closeCart();
-    window.location.href = '/checkout';
+    window.location.href = '/checkout.html';
 }
 
 function showCheckout() {
